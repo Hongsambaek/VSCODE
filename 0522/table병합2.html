@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table, tr, td {
+        border-width: 1px;
+        border-style: solid;
+    }
+    table {
+        width: auto;
+        border-color: black;
+    }
+    tr{
+        width: auto;
+        border-color: blueviolet;
+    }
+    td {
+        width: 50px;
+        height:40px;
+    }
+    caption {
+        caption-side: bottom;
+    }
+    </style>
+</head>
+<body>
+    <!-- 4x6테이블 만들고 병합하기 -->
+    <table>
+        <caption>테이블 제목</caption>
+        <tr>
+            <td colspan="2"></td>
+            <!-- <td></td> -->
+            <td colspan="2"></td>
+            <!-- <td></td> -->
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <td colspan="2"></td>
+            <!-- <td></td> -->
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+            <td colspan="2" rowspan="2"></td>
+            <!-- <td></td> -->
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <!-- <td></td> -->
+            <!-- <td></td> -->
+        </tr>
+    </table>
+</body>
+</html>

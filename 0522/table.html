@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* 내부스타일이 인라인 스타일 정의보다 효율성이 떨어짐.. */
+    table, tr, td {
+        border-width: 1px;
+        border-style: solid;
+    }    
+    table {
+        width: 400px;
+        border-color: black;
+    }
+    tr,td,th {
+        border-color: blueviolet;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+        보여지는 스타일은 내부 또는 외부 스타일 정의를 권장하고 있지만
+        table의 border스타일은 예외적으로 인라인 스타일을 사용한다
+        >> 가장 심플하게 적용되기 때문에 
+    -->
+
+    <!-- table의 최상위태그 -->
+    <table border="">
+        <!-- table row -->
+        <tr>
+            <!-- table header -->
+            <!-- 제목을 표현할 때 th를 사용 >> bold 및 align:center기능을 가짐 -->
+            <th>제목1</th>
+            <th>제목2</th>
+            <th>제목3</th>
+            <th>제목4</th>
+        </tr> 
+        <tr>
+            <!-- table data -->
+            <td>범죄도시1</td>
+            <td>범죄도시2</td>
+            <td>범죄도시3</td>
+            <td>범죄도시4</td>
+        </tr> 
+    </table>
+</body>
+</html>
