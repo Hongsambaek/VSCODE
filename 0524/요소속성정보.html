@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    div{
+        border: 1px dashed teal;
+        padding: 40px;
+    }
+</style>
+</head>
+<body>
+    <!-- input:button → type이 button인 input요소 생성 -->
+    <input type="button" id="id_btn" name="nm_btn" value="클릭" onclick="f_btn()">
+    <div id="id_div" onclick="f_div()">
+        클릭시 innerHTML속성으로 요소 사이 컨텐츠 정보를 읽음
+    </div>
+
+<script>
+function f_div() {
+    // doucment 객체는 문서 (웹 페이지) 그 자체
+    // 웹 페이지 내 html요소에 접근하려면 반드시 document객체로부터 시작한다
+    // console.log(document);
+    console.log(document.head.outerHTML);
+
+
+    // var v_div = document.getElementById('id_div');
+    var v_div = document.getElementsByTagName('div'[0]); // 여러 요소를 유사배열의 형태로 모두 반환
+
+    console.log(v_div.innerHTML); //get
+    v_div.innerHTML = "어떠한 값을 대입해보자"; //set
+}
+
+function f_btn() {
+    console.log(id_btn); // 요소의 id값으로 요소 그 자체를 얻음
+
+    // 각 태그는 하나의 요소이자 객체이며, 속성접근자(점 또는 대괄호표기법) 사용으로
+    // 요소의 속성(Attribute)값에 접근 가능하다
+
+    console.log(id_btn.type);
+    console.log(id_btn.id);
+    console.log(id_btn.name);
+    console.log(id_btn["name"]);
+    console.log(id_btn.value);
+    id_btn.value = "buttonClick!!";
+    console.log(id_btn["onclick"]);
+
+    // 요소를 찾아 반환하는 메소드 사용하는것이 표준
+    // getElement* 메소드를 사용하여 요소를 반환받음
+    console.log("메소드로 요소 얻기>> ", document.getElementById('id_btn'));
+    var v_btn = document.getElementById('id_btn');
+    console.log("요소의 타입>>", v_btn.type);
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>

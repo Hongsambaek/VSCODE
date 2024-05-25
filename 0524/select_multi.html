@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    div {
+        border: 4px dotted teal; 
+        padding: 40px;
+    }
+
+</style>
+</head>
+<body>
+    <!-- 콤보박스를 확장하고 다중 선택할 수 있게 함 -->
+    <select id="sel" multiple size="10" >
+        <option value="0">놀자코</option>
+        <option value="Cheer">화들짝로아콘</option>
+        <option value="play" selected>놀자에요</option>
+        <option value="playmong">놀자에몽</option>
+        <option value="Embarrassed">머쓱해요</option>
+        <option value="Thankskong">감사콩</option>
+        <option value="FrogMokoko">개구리모코코</option>
+        <option value="surprised">깜짝로아콘</option>
+    </select>
+    <input type="button" value="나를 누르면" onclick="f_sel()">
+
+    <div></div>
+
+<script>
+function f_sel() {
+   var v_sel1 = document.getElementById('sel');
+   var v_sel2 = document.querySelector('#sel');
+   console.log( v_sel1, v_sel2);
+
+   console.log(v_sel1.options);
+
+   var v_arr = [];
+   for(var i=0; i<v_sel1.options.length; i++) {
+        console.log("선택여부>> ", v_sel1.options[i].selected);
+
+        
+        // 조건문 if를 통해 true에 해당하는 값만 최종출력
+        if(v_sel1.options[i].selected) {
+            v_arr.push(v_sel1.options[i].value);
+        }
+        
+        
+    }
+    console.log("선택한 항목들 " + v_arr);
+
+    var v_div1 = document.getElementsByTagName( 'div' );
+    var v_div2 = document.querySelector( 'div' );
+    //innerHTML - get/set
+    v_div2.innerHTML = "선택한 항목들 " + v_arr;
+}
+    
+</script>
+</body>
+</html>

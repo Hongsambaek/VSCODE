@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select id="sel" onchange="f_sel(this)">
+        <option value="0">놀자코</option>
+        <option value="Cheer">화들짝로아콘</option>
+        <option value="play">놀자에요</option>
+        <option value="playmong">놀자에몽</option>
+        <option value="Embarrassed">머쓱해요</option>
+        <option value="Thankskong">감사콩</option>
+        <option value="FrogMokoko">개구리모코코</option>
+        <option value="surprised">화들짝로아콘2</option>
+    </select>
+
+<script>
+function f_sel(p_this){
+    // console.log(document.getElementById('sel'));
+
+    //모든 항목이 반환됨
+    console.log(p_this.innerHTML);
+
+    //콤보박스에서 내가 선택한 항목을 value로 간단히 얻을 수 있음
+    console.log(p_this.value);
+
+    //선택된 항목의 index번호 정보를 얻기 - selectedIndex
+    console.log(p_this.selectedIndex);
+
+    //요소 내부 정보 얻기1
+    alert(p_this.options[p_this.selectedIndex].innerHTML);
+
+    //요소 내부 정보 얻기2
+    var v_opt = document.querySelector('[value =' + p_this.value +']');
+    alert("얻기2 : " + v_opt.innerHTML)
+}
+
+</script>
+</body>
+</html>
