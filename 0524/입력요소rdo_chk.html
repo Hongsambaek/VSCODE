@@ -32,7 +32,7 @@ function f_chk(){
     for(var i = 0; i<v_chk.length; i++) {
         
         if(v_chk[i].checked) {
-            //true인 항목에 대한 값만 저장해서 최종 출력
+            // true인 항목에 대한 값만 저장해서 최종 출력
             // rst.push(v_chk[i].value);
             rst.push(v_chk[i].nextSibling.data.trim());
         }
