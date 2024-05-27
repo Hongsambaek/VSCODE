@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* 요소선택자 */
+    div {
+      color: teal;
+      background-color: turquoise;
+    }
+    /* id선택자 */
+    #mokokoCoke {
+      color: brown;
+    }
+    /* class선택자 */
+    .dsn {
+        color: rgb(109, 27, 27); /* 우선선택자 규칙(id>class)에 따른 색 적용을 확인 */
+        border : 1px dotted rgb(183, 173, 173)
+    }
+    /* 전체선택자 */
+    * {
+        border: 2px double green;
+        margin: 5px;
+    }
+    body * {
+        background-color: tan;
+    }
+    /* 그룹선택자 */
+    #mokokoCoke, #mokokoSanta {
+        font-style: italic;
+    }
+
+
+    </style>
+</head>
+<body>
+    <!-- w3c의 권장 >> id는 페이지 내 유일한 값으로, class는 중복 적용가능 -->
+    <div class="dsn">개구리모코코</div>
+    <div class="dsn">분홍개구리모코코</div>
+    <div id="mokokoCoke" class="dsn">콜라모코코</div>
+    <div id="mokokoSanta">산타모코코</div>
+    <p class="dsn">오로라모코코</p>
+</body>
+</html>

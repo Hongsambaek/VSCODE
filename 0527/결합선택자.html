@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body * {
+      border: 1px solid brown;
+      margin: 20px;
+    }
+    /* 자식선택자 */
+    /* 자식을 포함한 자손 */
+    #parent div {
+      border-color: rgb(90, 113, 90);
+    }
+    #parent>div {
+      border-color: teal;
+    }
+
+    /* 형제선택자 */
+    /* 더하기('+')로 기준요소의 바로 다음 형제만 선택 */
+    #second + div {
+      background-color: aqua;
+    }
+    /* 물결('~')로 기준요소의 모든 형제 선택 */
+    #second ~ * {
+        background-color: skyblue;
+    }
+    </style>
+</head>
+<body>
+    <!-- 들여쓰기를 통해 상하 계층구조를 한눈에 파악하기 쉽다 -->
+    <div id="parent">
+        <div>자식1</div>
+        <div id="second">자식2
+            <div>후손1</div>
+            <div>후손2</div>
+            <div>후손3</div>
+        </div>
+        <div>자식3</div>
+        <p>자식4</p>
+        <div>자식5</div>
+    </div>
+</body>
+</html>

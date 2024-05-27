@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+table {
+  border-style: solid;
+  display: inline-block;
+}
+table:first-child {
+  font-size: 12pt;
+}
+table:nth-child(2) {
+  font-size: 16px;
+}
+table:nth-child(3) {
+  font-size: 1.0em;
+}
+table:nth-child(4) {
+  font-size: 110%;
+}
+table:last-child {
+  font-size: medium;
+}
+#p1 {
+  font-family: Gigi, sans-serif;
+  line-height: 5px; /* 행간 거리 */
+  font-style: italic;
+  font-weight: bold;
+  font-variant: small-caps;
+  
+
+}
+</style>
+<body>
+    <table><tr><td>12pt</td></tr></table>
+    <table><tr><td>16px</td></tr></table>
+    <table><tr><td>1em</td></tr></table>
+    <table><tr><td>100%</td></tr></table>
+    <table><tr><td>medium</td></tr></table>
+
+    <p id="p1">Hello World!<br></p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+img {
+  width: 100px;
+  height: 100px;
+}
+img[src] {
+  border : 4px dotted rgb(255, 0, 0);
+}
+/* ^=속성값 >> 속성값으로 시작하는 */
+img[src^='/'] {
+    border: 4px dotted #000000;
+}
+/* $=속성값 >> 속성 값을 포함하는 */
+img[alt$=a] {
+    border-color: rgba(0, 255, 0, 0.4);
+}
+/* *=속성값 >> 속성 값을 포함하는 */
+/* ~=속성값>> 완전히 분리된 속성 값만을 포함하는 */
+[title~=ifrm] {
+  border: 2px double rgb(0%, 0%, 100%);
+}
+/* |=속성값 >> 속성값이거나 속성값-로 시작되는값 */
+[title|=ifrm] {
+  box-shadow: 14px 24px 15px yellowgreen; /* x축 y축 blue color */
+}
+</style>
+</head>
+<body>
+    <img src="../images/개구리모코코.jpg" alt="FrogMokoko">
+    <img src="/images/모코코2.png" alt="Mokoko2">
+    <img src="/0522/분홍모코코.png" alt="PinkMokoko"> <br><br>
+
+    <iframe src="../0523/multimedia.html" frameborder="0" title="ifrmedia"></iframe>
+    <iframe src="../0523/div.span.html" frameborder="0" title="ifrm-doc"></iframe>
+    <iframe src="../0524/요소속성정보.html" frameborder="0" title="ifrmedia"></ifrm>
+</body>
+</html>
