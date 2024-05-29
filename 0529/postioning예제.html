@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+span {
+	font-size: xx-large;
+	color: brown;
+	position: absolute;
+	left: 50px;
+	top: 100px;
+}
+div {
+	/* absolute 부모의 조건으로 포지션 설정함 */
+	position: relative;
+}
+img {
+	width: 100%;
+	/* height: calc(100vh - 63vh);  */ /* 마이너스 플러스 사용시 앞뒤로 공백줄 것 */
+	height: 100vh;
+}
+</style>
+</head>
+<body>
+    <!-- 이미지 위에 텍스트 얹기 -->
+		<div>놀자에요</div>
+		<div>화들짝이에요</div>
+		<div>샷건이에요...</div>
+		<div>
+			<!-- 숙제 >> 현재 이미지요소는 주석처리, 이미지 표현은 background속성으로 처리할 것 
+				+ 투명도 조절도 해줄것 (텍스는 선명하게 유지하기..)
+				background.html참고	
+			-->
+			<img src="../images/모코코안녕.png" alt="안녕모코코">
+		</div>
+    <span>HelloMokoko</span>
+</body>
+</html>

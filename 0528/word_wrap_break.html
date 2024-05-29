@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    div {
+      border-style: solid;
+      width: 50%;
+      /* word-wrap: break-word; */ /* 숫자와 영문 대상으로 줄바꿈처리 진행 */
+    
+    /* 문자 기준 줄바꿈은 모든 문자를 대상으로 쪼개어 배치하기 떄문에
+       띄어쓰기가 준비 되지 않은 컨텐츠도 영역 안 배치가 자연스러움
+         
+       단어 기준 줄바꿈은 단어를 기준으로 배치하므로
+       띄어쓰기 되지않은 컨텐츠를 한 단어로 인식하여 줄바꿈 처리가 원활하지 못함
+       때문에 word-wrap속성으로 문자 쪼개기가 필요한 것!
+    */
+    }
+    #en {
+        word-break: break-all;
+    }
+</style>
+</head>
+<body>
+    <!-- CJK기본값 break-all(문자 기준 줄바꿈) -->
+    <div id="kor">
+        13579246801357924680 <br>
+        모코코세상에오신것을환영합니다
+    </div>
+
+    <!-- non-CJK 기본값 keep-all(단어 기준 줄바꿈) -->
+    <div id="eng">
+        13579246801357924680 <br>
+        WelcometoMococoWorld
+    </div>
+</body>
+</html>

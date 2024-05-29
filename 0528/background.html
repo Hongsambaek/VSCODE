@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+* {
+	margin: 0; /* 브라우저 자체적으로 표현하는 바깥쪽 여백 정보를 제로화 */
+}
+
+div {
+	box-sizing: border-box; /* 각 div요소에 정의된 border 값(총 4px)을 높이 값에 포함시킴 */
+}
+#container {
+	height: 100vh; /* %를 대체하는 vh단위로 화면상에 꽉찬 높이값을 설정가능 */ 
+}
+#content {
+	border: 15px dashed blue;
+	padding: 10px;
+	width: 100%; /* 100% 활용시 기본값으로서 생략가능 */
+	height: 100%; /* 높이 속성에 대한 %단위는 부모가 높이 값을 가질 때만 사용가능 */
+	background-color: mediumaquamarine;
+	background-image: url(../images/모코코안녕.png);
+	background-size: 50% 65%;
+	background-repeat: no-repeat;
+	/* 방향속성값(top/bottom/left/right) 외 여러 단위를 이용해 x축 y축 설정가능 */
+	/* background-position: 50% 20%; */ 
+	/* -origin : 이미지 시작 위치점 (기본값은 padding-box) */
+	background-origin: content-box;
+	/* -clip : 페인팅되는 범위 */
+	/* (origin보다 범위가 작을경우(border>padding>content) 이미지가 잘려서 표현될 수 있음) */
+	background-clip: content-box;
+}
+/* background 속성 축약 정의 */
+#content1 {
+	border: 10px dotted brown;
+	height: 95%;
+	/* -color -image -position/-size -repeat -origin -clip -attachment */
+	/* 일반적으로 정의되는 순서가 존재하되, 순서가 변경되도 상관없음 */
+	/* 1. position뒤에 size배치 */
+	/* 2. origin뒤에 clip배치는 지켜야 하는 규칙 */
+	/* (참고) position은 size와 같은 단위를 공유하므로 반드시 슬래시로 구분해야 하며,
+	   position은 단독 사용가능, size는 무조건 position과 명시되어야 한다 */
+	background: green url(../images/팝콘각\ 모코코.gif) 0% 0%/50% no-repeat padding-box; 
+}
+/* 여러 이미지 표현 */
+#content2 {
+	border-style: solid;
+	height: 100%;
+	/* 먼저 정의된 이미지가 가장 상위 레이어로 표현됨 */
+	/* 여러 이미지 정의시 -color는 제외해야 함 */
+	background: url(../images/팝콘각\ 모코코.gif) 0% 0%/50% repeat-x content-box padding-box,
+					url(../images/개구리모코코.jpg) 0% 0%/50% repeat-y content-box padding-box,
+					url(../0522/분홍모코코.png) 0% 0%/50% content-box padding-box; 
+}
+/* 투명한 배경 적용 */
+#content3 {
+	height: 100%;
+}
+#content3::before {
+	content: "";
+	background: url(../images/팝콘각\ 모코코.gif) right top/50% no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0.7;
+}
+span {
+	position: absolute;
+}
+</style>
+</head>
+<body>
+    <div id="container">
+      <div id="content3">
+				<span>캐릭터 "팝콘각모코코"</span>
+			</div>
+    </div>
+</body>
+</html>

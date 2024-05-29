@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Jua&display=swap" rel="stylesheet">
 <style>
 table {
   border-style: solid;
@@ -30,8 +33,21 @@ table:last-child {
   font-style: italic;
   font-weight: bold;
   font-variant: small-caps;
-  
-
+}
+#p2 {
+  /*축약 선언시
+   1. 순서 유의 >> font - style - variant - weight - size/line-height - family 순
+   2. -size, -family는 필수로 적용, 나머지는 항목 생략시 기본값이 적용된다
+    * font size/line-height는 상속되므로 부모 위치에서 적용하는 편
+  */
+  /* font: italic small-caps bold 1.3em/20px Gigis, monospace; */
+  /* font: 1.3em Gigi, monospace; */
+  font-family: "Jua","Black And White Picture", sans-serif; /* 영문 한글 순서로 폰트 배치하면 둘다 사용가능 */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 
+   "ELSH" 0;
 }
 </style>
 <body>
@@ -41,6 +57,8 @@ table:last-child {
     <table><tr><td>100%</td></tr></table>
     <table><tr><td>medium</td></tr></table>
 
-    <p id="p1">Hello World!<br></p>
+    <p id="p1">Hello World!<br>Hello World!<br></p>
+    <p id="p2">Hello World 모코코 세상에 오신것을 환영합니다<br>Mokoko</p>
+    <p id="p3">Hello Mokoko</p>
 </body>
 </html>

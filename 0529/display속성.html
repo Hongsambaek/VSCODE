@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+div {
+	border-style: solid;
+	width: 50%;
+}
+span{
+	border: 2px solid red;
+}
+#block {
+	display: block;
+}
+/* 자체적인 요소의 너비값만 사용하며 높이너비 적용 불가 */
+#inline {
+	display: inline;
+	width: 100px;
+	height: 100px;
+}
+/* 인라인 요소로서 평가되지만 block의 장점을 사용가능 */
+#inline-block {
+	display: inline-block;
+	width: 200px;
+	height: 100px;
+}
+#none {
+	display: none;
+}
+</style>
+</head>
+<body>
+    <div>대한사람 <span id="block">대한으로</span> 길이 보전하세</div>
+    <div>대한사람 <span id="inline">대한으로</span> 길이 보전하세</div>
+    <div>대한사람 <span id="inline-block">대한으로</span> 길이 보전하세</div>
+    <div>대한사람 <span id="none">대한으로</span> 길이 보전하세</div>
+</body>
+</html>

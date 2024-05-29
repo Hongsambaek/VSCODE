@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+ul {
+	list-style-type: circle;
+	list-style-image: url(../images/mark.png);
+	list-style-position: inside;
+}
+table {
+	width: 500px;
+	/* height: 240px; */
+	/* border-collapse: collapse; */
+	border-spacing: 5px; /* border-collapse 기본값일때만 사용가능 */
+	/* empty-cells: hide; */ /* 테이블 내 컨텐츠 존재 유무에 따라 프레임 show/hide */
+	text-align: center;
+	text-align-last: right;
+	table-layout: auto;
+	word-wrap: break-word;
+}
+td {
+	height: 60px;
+}
+.hol {
+	background-color: teal;
+}
+tr:nth-child(even) {
+	background-color: green;
+}
+tr:nth-child(odd) {
+	background-color: brown;
+}
+</style>
+</head>
+<body>
+    <!-- ul>li*4 -->
+    <ul>
+    <!-- <ul>  -->
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+		<table border="1">
+			<tr class="hol">
+				<td>111111111111111</td>
+				<td></td>
+				<td>3333333</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td></td>
+				<td>3</td>
+				<td></td>
+			</tr>
+			<tr class="gol">
+				<td></td>
+				<td>2</td>
+				<td></td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+</body>
+</html>

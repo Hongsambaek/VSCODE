@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+div {
+  border: black solid;
+	border-width: 2px;
+  padding: 20px;
+  width: 200px; /* box-sizing : border-box 설정 시 지정한 너비(width) 값에 테두리와 안쪽 여백값을 포함시킴(바깥여백값은 제외) */
+  /* margin: 20px; */
+	margin: 20px auto; /* 브라우저가 컨텐츠를 제외한 잉여공간을 계산하여 요소를 자동 중앙정렬함 */
+	/* display: inline-block; */
+	margin: 20px; /* 요소를 inline으로 변경시 margin : auto는 적용되지 않음, 또한 가운데 정렬 방법이 쉽지 않음 */
+	box-sizing: border-box;
+}
+#small {
+  background-color: teal;
+	/* border-style: solid dotted double ridge; */ /* 시계방향으로 적용 */
+}
+#large {
+	background-color: green;
+/* 	border-color: red, blue, gray; */ /* 위, 좌우, 아래 적용 */
+/*  border-width : 5px 10px; */ /* 상하, 좌우 적용 */
+}
+hr {
+	visibility: hidden;
+}
+</style>
+<body>
+    <div id="small"></div>
+		<hr>
+    <div id="large"></div>
+</body>
+</html>
