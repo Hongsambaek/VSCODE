@@ -2,76 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <style>
-div {
-	border: 3px solid black;
-	border-radius: 20px;
-	width: 100px;
-	height: 100px;
-	text-align: center;
-	font-size: 2em;
-	/* 요소가 생성된 순서대로 자연스럽게 배치된 형태 → static 정적위치 */
-	/* 정적배치 요소는 방향 속성(top, left, right, bottom) 영향을 받지 않음 */
-	/* position : static; */
-
-	/* 정적 위치로부터 방향속성 값이 적용된 상태 */
-	/* position : relative; */
-
-	/* 기준점의 위치로부터 방향속성 값이 적용된 상태 */
-	/* 기준점은 기본적으로 브라우저(창)의 상단 좌측이지만, 
-	부모 영역으로 변경가능하며, 이때 부모영역은 조건이 필요함(position 속성 중
-	non-static한 값이 적용되어야 함)*/
-	/* position : absolute; */
-	
-	/* 기준점으로부터 방향속성 적용된 위치가 항상 고정된 상태 */
-	position: absolute;
-}
 #parent {
 	border-style: solid;
 	height: 2400px;
 	/* absolute가 적용된 자식요소들의 기준점이 되기위한 조건 부여하기 */
 	/* position: relative; */
 	left: 300px;
+	top: 100px;
 }
 #parent div {
-	border: 3px solid black;
-	border-radius: 20px;
-	width: 100px;
-	height: 100px;
-	text-align: center;
-	font-size: 2em;
+  border: 3px solid black;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 2em;
+  /* 요소가 생성된 순서대로 자연스럽게 배치된 형태>> static 정적위치 */
+  /* 정적배치 요소는 방향 속성(top,left,right,bottom) 영향을 받지 않음 */
+  /* position: static; */
+  
+  /* 정적 위치로부터 방향속성 값이 적용된 상태 */
+  /* position: relative; */
+  
+  /* 기준점의 위치로부터 방향속성 값이 적용된 상태 */
+	/* 기준점은 기본적으로 브라우저(창)의 상단 좌측이지만,
+	부모영역으로 변경가능하며, 이때 부모영역은 조건이 필요함
+	(position속성 중 non-static한 값이 적용되어야 함) */ 
+  /* position: absolute; */
+
+	/* 기준점으로부터 방향속성 적용된 위치가 항상 고정된 상태 */
+  position: fixed;
+
 }
 #fst {
-	background-color: red;
-	top: 50px;
-	left: 50px;
+  background-color: red;
+  top: 50px;
+  left: 50px;
 }
-#snd {
-	background-color: orange;
-	top: 60px;
-	left: 60;
-	z-index: 0;  /* 기본값 0, 음수양수 사용으로 스택순서 지정가능 */
+#scd {
+  background-color: orange;
+  top: 60px;
+  left: 60px;
+	z-index: 0; /* 기본값0, 음수양수 사용으로 스택순서 지정가능 */
 }
 #thd {
-	background-color: teal;
+  background-color: teal;
 	top: 70px;
-	left: 70px;
+  left: 70px;
 }
 #fth {
-	background-color: skyblue;
+  background-color: skyblue;
 	top: 80px;
-	left: 80;
+  left: 80px;
 }
 </style>
 </head>
 <body>
 	<div id="parent">
-    <div id="fst">1</div>
-    <div id="snd">2</div>
-    <div id="thd">3</div>
-    <div id="fth">4</div>
+    <div id="fst">1</div>    
+    <div id="scd">2</div>    
+    <div id="thd">3</div>    
+    <div id="fth">4</div>    
 	</div>
 </body>
 </html>

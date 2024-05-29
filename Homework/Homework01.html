@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+* {
+	margin: 0;
+}
+div {
+	position: relative;
+}
+#Mokoko {
+	height: 100vh;
+}
+#HelloMokoko {
+	height: 100%;
+}
+#HelloMokoko ::before {
+	content: " ";
+	background-image: url(../images/모코코안녕.png);
+	background-size: 400px 400px;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	opacity: 0.6;
+}
+span {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	right: 0;
+	bottom : 0;
+}
+</style>
+</head>
+
+<body>
+	<div>안녕모코코1</div>
+	<div>안녕모코코2</div>
+	<div>안녕모코코3</div>
+	<div>안녕모코코4</div>
+	<div>안녕모코코5</div>
+	<div>안녕모코코6</div>
+	<div id="Mokoko">
+		<div id="HelloMokoko"><span>캐릭터 모코코</span></div>
+	</div>
+</body>
+</html>
