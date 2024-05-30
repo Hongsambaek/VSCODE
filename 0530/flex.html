@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+#container {
+  border: 2px dotted red;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-flow: row wrap; */
+  width: 300px;
+  height: 100px;
+}
+.item {
+  border: 1px solid teal;
+  width: 140px;
+  height: 40px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <!-- 
+  flex: 요소를 효율적으로 배치, 정렬, 분산할 수 있는 방법을 제공하는 CSS3의 새로운 레이아웃 방식
+  장점은 복잡한 계산 (float, positioning) 없이 요소의 크기와 순서를 유연하게 배치할 수 있음
+
+  display: flex 적용시 >> 자식요소가 모두 inline-block으로 설정됨
+
+  flex container에 적용하는 속성
+    flex-direction(row)         - 배치 방향 결정
+    flex-wrap(nowrap)           - 영역안으로 랩핑할 지 결정
+    flex-flow                   - direction, wrap 동시 설정
+    align-content(stretch)      - 여러 행(flex line)정렬 (flex-wrap: wrap일때만 유효/ nowrap은 flex line이 한줄)
+    justify-content(flex-start) - 요소 가로 정렬
+    align-item(stretch)         - 요소 세로 정렬 (one line도 정렬)
+
+  flex item에 적용하는 속성
+    flex (-basis, -grow, -shrink 축약)
+    flex-basis                  - 아이템의 기본 크기 지정 (flex-direction이 row방향일 경우 너비값/ column방향일 경우 높이값으로 적용)
+    flex-grow                   - 유연하게 늘리기 (flex-basis값보다 커질 수 있는지 결정)
+    flex-shrink(1)              - 유연하게 줄이기, 기본 값에 의해 자동 축소되므로, 너비 줄어듦을 방지하려면 f-shrink: 0을 선언해야 함
+    align-self                  - y축 아이템 정렬
+    order                       - 배치 순서
+    z-index
+-->
+</body>
+</html>

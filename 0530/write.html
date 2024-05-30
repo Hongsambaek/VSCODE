@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="f_fnc()">button</button>
+
+  <script>
+  function f_fnc(){
+    /* 함수 실행 전 존재하는 요소를 지우므로 사용시 주의 */
+    document.write("<button>점메추</button>");
+    /* 따옴표 내부에 같은 따옴표 사용시 탈출문자로 표현해서 문법오류를 해결 */
+    document.write("<img src = \"../images/모코코안녕.png\" alt=\"모코코\">");
+  }
+  </script>
+</body>
+</html>

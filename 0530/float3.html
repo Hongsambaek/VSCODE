@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+div {
+	width: 30%;
+	border-style: solid;
+	float: left;
+}
+/* float 속성의 적용을 받지 않을 대상에 clear 속성 적용 */
+div:last-of-type {
+	clear: left;
+}
+</style>
+</head>
+<body>
+	<div>No.1</div>
+	<div>No.2</div>
+	<div>No.3</div>
+</body>
+</html>

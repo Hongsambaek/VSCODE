@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+header, footer {
+  height: 20vh;
+  background-color: purple;
+}
+aside {
+  width: 20%;
+  height: 60vh;
+  background-color: lightgray;
+}
+main {
+  width: 60%;
+  height: 60vh;
+  background-color: tomato;
+}
+aside:first-of-type, main {
+  float: left;
+  /* opacity: .3; */
+}
+aside:last-of-type {
+  float: right;
+}
+footer {
+  clear: both; /* left, right 둘 다 해제시 */
+}
+</style>
+</head>
+<body>
+  <header></header>
+  <aside></aside>
+  <main></main>
+  <aside></aside>
+  <footer></footer>
+</body>
+</html>

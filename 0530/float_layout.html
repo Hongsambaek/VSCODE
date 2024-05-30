@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+div{
+  border-style: solid;
+  box-sizing: border-box;
+  margin: 5px;
+}
+#header, #footer {
+  background-color: yellow;
+  height: 10vh;
+}
+#footer {
+  clear: left;
+}
+#aside1, #aside2 {
+  background-color: aqua;
+  width: calc(20% - 10px);
+  height: 50vh;
+  float: left;
+}
+#content {
+  background-color: saddlebrown;
+  width: calc(60% - 10px);
+  height: 50vh;
+  float: left;
+}
+</style>
+</head>
+<body>
+  <div id="header"></div>
+  <div id="aside1"></div>
+  <div id="content"></div>
+  <div id="aside2"></div>
+  <div id="footer"></div>
+</body>
+</html>
