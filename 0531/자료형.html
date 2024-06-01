@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<script>
+
+  /*
+
+  기본형 - number, string, boolean, null, undefined, Symbol(ES6), bigint(ES2020)
+  참조형 - object, function >> 점 표기법과 대괄호 표기법으로 내부 속성/메소드 접근가능
+  */
+
+
+  let v_varb = "자료형";
+  v_varb = 1;
+  v_varb = false;
+  // typeof연산자 결과가 object로 나오는 것은 버그다... 그냥 null임
+  v_varb = null; // 개발자에 의해 의도된 값, 비어있음을 표시할 때...
+  v_varb = undefined; // 개발자의 의도가 아닌, 자바스크립트 엔진에 의한 값
+
+  /* 
+     Symbol - ES6에서 추가된 기본형 타입(=변경 불가 원시타입) 
+     다른 속성과 충돌되지 않는 유일성을 보장받는 타입으로서 보통 객체의 KEY로 사용된다
+  */
+  v_varb = Symbol(); // 중복되지 않는 값을 생성한다.
+
+  /* 
+     BigInt - 길이의 제약없이 정수를 다룰 수 있게 하는 숫자형
+     number타입보다 더 큰 정수 표현을 위해 등장함
+     숫자 뒤에 n을 붙이거나 BigInt()를 호출해서 사용 (ex. 1234n / BigInt(1234)) 
+  */
+ // v_varb = 1n;
+  v_varb = BigInt(2);
+
+  v_varb = []; // object
+  v_varb = {}; // object
+  v_varb = function(){}; // function
+
+  // 변수의 자료형을 typeof 연산자를 이용해 알 수 있다.
+  console.log(typeof v_varb);
+</script>

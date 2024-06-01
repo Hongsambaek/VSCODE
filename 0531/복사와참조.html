@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script>
+  // 기본 형 - 데이터를 복사해서 사용함
+  // 데이터 복사하므로 메모리 증가
+  let v_coffee = "커피";
+  let v_iceCoffee = v_coffee;
+  console.log(v_coffee, v_iceCoffee);
+
+  v_iceCoffee = "냉커피";
+
+  console.log(v_coffee, v_iceCoffee);
+
+  // 참조 형 - 데이터를 참조해서 사용함
+  // 원본 데이터가 수정되므로 사용에 주의
+  let v_source = ['로제', '크림', '오일', '페스토'];
+  let v_pasta = v_source;
+  console.log(v_source, v_pasta);
+  v_pasta[2] = "51";
+  console.log(v_source, v_pasta);
+
+</script>
