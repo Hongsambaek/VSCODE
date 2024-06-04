@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- if문으로 학점출력 해보기 -->
+  <a href="javascript:f_grade()">학점확인</a>
+  <script>
+    function f_grade() {
+      let v_score = prompt('점수를 입력하시오', '기준은 100점만점');
+
+      if (isNaN(v_score)) {
+        alert("숫자(점수)만 입력하시오.")
+        return;
+      }
+
+      console.log(parseInt(v_score / 10));
+      let v_disp = document.querySelector('div');
+
+      // 음수값이나 100점을 초과하는 값
+      if((v_score) > 100 || v_score < 0) {
+        v_disp.innerText = "잘못 입력된 정보입니다";
+        alert("잘못된 변수입니다.")
+        return;
+      }
+
+      v_score = parseInt(v_score/10);
+
+      if (parseInt(v_score) == 10 || parseInt(v_score) == 9) {
+        document.write("A학점입니다.")
+      } else if (parseInt(v_score) == 8) {
+        document.write("B학점입니다.")
+      } else if (parseInt(v_score) == 7) {
+        document.write("C학점입니다.")
+      } else if (parseInt(v_score) == 6) {
+        document.write("D학점입니다.")
+      } else {
+        document.write("F학점입니다.")
+        return f_grade();
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -6,13 +6,29 @@
   <title>Document</title>
 </head>
 <body>
+  입력된 값 : <span>500</span>
+  입력된 값2 : <span>400</span>
+  결과 : <span>900</span>
+
   <script>
     let num1 = parseInt(prompt("숫자입력해라"));
     let num2 = parseInt(prompt("숫자입력해라"));
-    console.log(num1 + num2);
+    // console.log(num1 + num2);
 
-    document.write(num1 + "+" + num2 + "=" + (num1 + num2))
-    alert(num1 + "+" + num2 + "=" + (num1 + num2))
+    // document.write(num1 + "+" + num2 + "=" + (num1 + num2))
+    // alert(num1 + "+" + num2 + "=" + (num1 + num2))
+    // querySelector로 요소선택자 지정시 여러 개 중 첫 번째 항목만 반환하는 특징
+    console.log(typeof num1);
+
+    let v_span1 = document.querySelector('span');
+    v_span1.innerText = num1;
+    
+    let v_span1 = document.querySelector('span');
+    v_allpan[1].innerText = num2;
+    
+    let v_span1 = document.querySelector('span');
+    v_allspan[2].innerText = num1 + num2;
+    
   </script>
 </body>
 </html>

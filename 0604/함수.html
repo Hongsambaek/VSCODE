@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 선언식함수(declaration) - 브라우저 런타임 이전에 선언
+  f_fnc(); // 호이스팅의 영향(선언부를 상단으로 끌어올려~)으로 선언 전 호출되어도 오류를 발생하지 않음
+  function f_fnc() {
+    alert("선언식!!");
+  }
+  // 표현식함수(expression, 연산을 통한 최종 겨로가가 1개로 정리되는 방식)
+  // - 브라우저 런타임에 동적으로 선언/ 변수애 함수를 값처럼 대입하고 변수 이름을 통해 함수 호출
+  var f_fnc = function(){
+    alert("표현식");
+  };
+
+  // 변수와 함수가 동일한 식별자를 사용할 때, 선언 시점에 의해 표현식 함수가 오버라이딩되어 출력된다.
+  // * var 특성상 재선언을 가능케하여 코드 오류를 발생시킬 수 있으므로 let키워드의 사용을 권장한다.
+  f_fnc();
+  f_fnc1();
+
+  // 화살표함수(arrowFunction, 람다함수) - ES6
+  // let f_arrow = () => {};
+  // 매개변수가 없을때 / 여러개일때 반드시 소괄호를 작성한다
+  // 매개변수가 1개일 때는 소괄호를 생략 가능
+  // 실행문이 1줄일때 중괄호 생략 가능하며 자동 return됨
+  let f_arrow = () => "화살표함수/ 중괄호와 리턴 생략됨";
+  console.log(f_arrow());
+
+  let f_arrow2 = () => {};
+  f_arrow2("인자전달행~");
+
+  let f_arrow3 = (a,b) => 
+    "화살표함수.." + a + b
+  console.log(f_arrow3('arrow', 'function'));
+
+  // 즉시실행함수(IIFE, Immediately-invoked function expression)
+  // 전역 영역의 오염(>> 코드 충돌 방지) 없이 변수 초기화에 많이 사용됨
+  // 외부에서 접근 불가하여 데이터를 보호함
+  // (function(매개변수){})(인자)
+  (function(param){
+    let v_disp = document.querySelector('body');
+    let v_arr = ['info', null];
+    if(param) {
+      // 정보를 출력하거나
+    }
+    // 하지않는다
+    v_disp.innerText =v_arr[1];
+  })(confirm("정보를 출력하실래요?"))
+  
+
+
+
+
+</script>
+</body>
+</html>

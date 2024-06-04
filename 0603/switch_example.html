@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="javascript:f_score()">등급확인</a>
+<script>
+function f_score() {
+  let v_score = prompt('점수를 입력하시오', '100점만점임');
+
+  if(isNaN(v_score)) return; // 숫자가 아닐 때 함수 종료
+  
+  console.log( parseInt(v_score/10) );
+
+  switch(parseInt(v_score/10)) {
+    case 10 :
+    case 9  :
+      document.write("A학점");
+      break;
+    case 8  :
+      document.write("B학점");
+      break;
+    case 7  :
+      document.write("C학점");
+      break;
+    case 6  :
+      document.write("D학점");
+      break;
+    default   :
+      document.write("F학점");
+      break;
+  }
+}
+</script>
+</body>
+</html>
