@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    span {
+      border: 2px dotted teal;
+      padding: 10px;
+    }
+    p {
+      margin: 30px;
+    }
+  </style>
+</head>
+<body>
+  첫번째 : <input id="x" size="3"> <br>
+  두번째 : <input id="y" type="text" size="3"> 
+  결과 : <input size="3"> <br>
+  
+  <input type="button" value="+" olknclick="calc('+')">
+  <input type="button" value="-" onclick="calc('-')">
+  <input type="button" value="x" onclick="calc('*')">
+  <input type="button" value="÷" onclick="calc('/')">
+
+  <br><br>
+
+  <p>첫번째값 : <span id ="sp1"></span> </p>
+  <p>두번째값 : <span id ="sp2"></span> </p>
+  <p>결과 값 : <span id ="sp3"></span></p>
+
+  <!-- let xVal;
+  let yVal;  -->
+
+  <script>
+    let calc = function(p_oprt){
+
+      // 결과 1 - input 요소 
+      let v_input = document.querySelector('input:nth-of-type(3)')
+      // 결과 2 - span 요소 
+      let v_spans = document.querySelectorAll('span');   // 유사배열로 요소3개를 반환받음
+      
+      let xVal = document.querySelector('#x');
+      let yVal = document.getElementById('y');
+
+      v_spans[0].innerText = xVal.value;
+      v_spans[1].innerText = yVal.value;
+
+      // 조건 - switch
+      switch(p_oprt){
+        case '+':
+          // 결과를 반환받을 함수를 호출
+          v_input.value = f_add();
+          v_spans[2].innerText = f_add();
+          break;
+        case '-':
+          v_input.value = f_sub();
+          v_spans[2].innerText = f_sub();
+          break;
+        case '*':
+         v_input.value = f_mul();
+          v_spans[2].innerText = f_mul();
+          break;
+        case '/':
+          v_input.value = f_div();
+          v_spans[2].innerText = f_div();
+          break;
+      }
+    };
+
+    let xVal = document.querySelector('#x');
+    let yVal = document.getElementById('y');
+    // console.log(typeof xVal);
+
+    let f_add = function(){
+      return parseInt(xVal.value) + parseInt(yVal.value);
+    };
+    let f_sub = function(){
+      return xVal.value - yVal.value;
+    };
+    let f_mul = function(){
+      return xVal.value * yVal.value;  
+    };
+    let f_div = function(){
+      return xVal.value / yVal.value;
+    };
+    
+
+
+  </script>
+
+</body>
+</html>

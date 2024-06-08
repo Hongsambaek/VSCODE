@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<script>
+
+  function f_fnc(param1, param2, param3) { // 많으면 undefined처리
+    // alert(param1 + param2 + param3); // alert는 하나의 인자만 출력하므로 + 사용
+    // console.log(param1[0] + param2[1] + param3);
+    console.log(param1.key, param1.키, param1[314]); // 숫자와 변수는 대괄호표기법 사용
+
+
+  }
+  // f_fnc('쿠키', '크림'); // 넘치면 무시되고
+  // f_fnc(['쿠키', '크림']); // 배열로 전달
+  f_fnc({key:'value', '키': '밸류', "314":"화이트데이"}); // 객체로 전달
+
+
+
+  let f_fnc2 = function(param1, param2){
+    alert(param1 + "부족하면" + param2);
+  };
+  f_fnc2('인수가 남으면 무시되고, ');
+
+  function f_fnc3(param) {
+    // alert(param); 함수 그 자체
+    alert(param()); // 함수호출하여 결과를 반환받음
+  }
+  // f_fnc3(function(){});
+  // f_fnc3(function(){return "아무거나...^^"});
+  f_fnc3(function(){ alert('함수호출'); return "^^ 나를 생략하면 undefined이다." });
+
+</script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<script>
+  // 객체 배열 생성
+  let v_njs = [
+  {
+    "name" : "민지",
+    "birth" : "2004-05-07",
+    "position" : '리더'
+  },
+
+  {
+    "name" : "하니",
+    "birth" : "2004-10-06",
+    "position" : '메인보컬'
+  },
+
+  {
+    "name" : "다니엘",
+    "birth" : "2005-04-11",
+    "position" : '메인댄서'
+  },
+
+  {
+    "name" : "해린",
+    "birth" : "2006-5-15",
+    "position" : '서브보컬'
+  },
+
+  {
+    "name" : "혜인",
+    "birth" : "2008-04-21",
+    "position" : '보컬/래퍼'
+  }
+];
+
+// 이름으로 정렬
+v_njs.sort(function(a,b){
+  console.log("a 매개변수로 들어온 값 : ", a.name, "|", b.name); 
+
+  if(a.name > b.name) {
+    return 1; // 오름차순
+  }else {
+    return -1; // 자리변경이 일어남
+  }
+});
+let nSort = Array.from(v_njs); // 현재 정렬 결과를 새 배열로 저장
+console.log("이름으로 정렬", nSort); 
+
+// 생일로 정렬
+/* v_njs.sort(function(a,b){
+  console.log("생일순 : ", a.birth, "|", b.birth);
+
+  if(a.birth > b.birth) {
+    return 1;
+  }else {
+    return -1;
+  }
+});
+console.log(v_njs); */
+
+// 숫자형 문자데이터 >> 숫자로 변경 후 - 연산자 이용 결과 반환 (생일)
+
+v_njs.sort(function(a,b) {
+  
+  // replace(찾아낸문자, 변경할문자)
+  console.log(a.birth.replaceAll('-', ''));
+  return a.birth.replaceAll('-', '') - b.birth.replaceAll('-', '');
+});
+let bSort = Array.from(v_njs);
+console.log("생일로 정렬", v_njs);
+
+
+
+// 포지션으로 정렬
+/* v_njs.sort(function(a,b){
+  console.log("포지션 비교 : ", a.position, "|", b.position);
+
+  if(a.position > b.position) {
+    return 1;
+  }else {
+    return -1;
+  }
+});
+console.log(v_njs); */
+
+v_njs.sort(function(a,b){
+  // 비교연산자가 내부적으로 유니코드 변경해서 값을 비교하므로
+  // 직접 유니코드로 변경 후 - 연산을 사용
+  // console.log(a.position);
+  // console.log(a.position.charCodeAt());
+  return a.position.charCodeAt() - b.position.charCodeAt()
+});
+
+// 콘솔로 표현하는 각 정렬 결과가 가장 마지막 정렬 결과로 일괄 표현되는 모습
+// >> Array.from() 을 사용해서 각 위치의 정렬 결과를 변수에 담아 해결
+console.log("포지션으로 정렬", v_njs);
+
+</script>

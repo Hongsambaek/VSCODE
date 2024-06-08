@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>Max 3개까지만 체크하기(초과시 메시지 출력과 함께 초과 체크된 항목 해제)</h3>
+
+  <!-- <input type="checkbox" value="js" onclick="f_fnc(this)">JS
+  <input type="checkbox" value="css" onclick="f_fnc(this)">CSS
+  <input type="checkbox" value="html" onclick="f_fnc(this)">HTML
+  <input type="checkbox" value="java" onclick="f_fnc(this)">JAVA
+  <input type="checkbox" value="server" onclick="f_fnc(this)">SERVER -->
+  
+  <input type="checkbox" value="js">JS
+  <input type="checkbox" value="css">CSS
+  <input type="checkbox" value="html">HTML
+  <input type="checkbox" value="java">JAVA
+  <input type="checkbox" value="server">SERVER
+
+  <script>
+    let chkCount = 0; // 체크 갯수를 담을 변수
+
+    // 내부 스크립트에서 요소들을 대상으로 이벤트 일괄 부여
+    // document.getElementsByTagName('input');
+    document.querySelectorAll('input');
+    for(let i = 0; i<v_inputs.length; i++) {
+      // 모든 input요소에 이벤트를 하나씩 부여해 주기
+      // addEventListener(이벤트명, 콜백함수)
+      v_inputs[i].addEventListener('click', function(){
+        // 기능
+        console.log(v_inputs[i]);
+        console.log(this);
+        // result 
+        if(this.checked) {
+          chkCount++
+        }else {
+          chkCount--
+        }
+        // 3개까지 제한
+      if(chkCount > 3) {
+        alert("3개까지만 선택가능합니다.");
+        p_this.checked = false; // 체크된 4번째 항목 해제
+        chkCount--; // 추가된 값도 빼주기
+      }
+      })
+    }
+
+
+    let f_fnc = function(p_this){
+      // console.log(p_this.checked); // 요소의 체크 여부 확인
+
+      if(p_this.checked) {
+        chkCount++
+      }else{
+        chkCount--
+      }
+      console.log(chkCount);
+
+      console.log(chkCount);
+    };
+
+
+
+
+  </script>
+</body>
+</html>

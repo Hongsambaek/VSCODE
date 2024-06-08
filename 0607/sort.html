@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<script>
+
+  let v_numArr = [12, 100, 230, 32, 300, 24, 512];
+
+  v_numArr.sort(function(a, b){
+    // 결과가 음수값일때 자리변경
+    // console.log("a :" + a, "- b : " + b + "=" + (a-b) );
+    // console.log( `b: ${b} - a: ${a} = ${b-a}`  );
+    // return a-b; // 오름차순
+    return b-a;
+  })
+  // console.log("정렬 >> ", rst);
+
+  console.log("123" - "23"); // 자체적으로 자동형변환을 통해 값을 얻어낼 수 있음
+  console.log("가영" - "나영"); // NaN, 문자열은 연산되기 위한 자동형변환이 불가
+
+  // 비교연산을 통해 문자열을 내부적으로 유니코드로 변환하여 비교할 수 있다.
+
+  console.log("가영이의 유니코드 >> ", "가영".charCodeAt()); // 문자열을 유니코드로 확인
+  console.log("나영이의 유니코드 >> ", "나영".charCodeAt()); 
+
+  if("가영" < "나영") {
+    alert("나영이가 더 큼");
+  }
+
+  let v_strArr = ["가영","나주", "다영", "하영", "래원"];
+  v_strArr.sort(function(a,b) {
+    console.log(`a(${a}) > b(${b}) | ${a > b}`);
+    
+    // if(a > b) { 오름차순
+      if(b > a) {
+      return 1;
+    }else {
+      return -1; // 결과가 음수이면 자리변경
+    }
+  });
+  console.log(v_strArr);
+ 
+
+
+</script>

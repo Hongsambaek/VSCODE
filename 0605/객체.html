@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<body>
+  <button>리터럴 방식</button>
+  <button>생성자 방식</button>
+  <button>사용자 정의 방식</button>
+</body>
+<script>
+
+  let v_btns = document.querySelectorAll('button'); //유사배열
+  v_btns[0].addEventListener('click',function(){
+
+    //리터럴로 객체 생성
+    let dripCoffee = {
+      제품명: "탄자니아",
+      '식품유형' :'커피',
+      "내용량":"10g",
+      유통기한: new Date("2024.10.16"),
+      brew : function(){
+        return "원두를 뜨거운 물로 1분간 불린 후 " + parseInt(this.내용량)*12 + "ml 추출";
+      },
+      //ES6축약방식
+      caution(){
+        return this.식품유형 + "추출 시 화상에 주의";
+      }
+    };
+    console.log(dripCoffee);
+    console.log(dripCoffee.내용량);
+    console.log(dripCoffee['유통기한'].toLocaleString());
+    console.log(dripCoffee.brew());
+    console.log(dripCoffee['caution']());
+  });
+
+  v_btns[1].addEventListener('click',function(){
+    //내장객체의 생성자로 생성
+    let maxim = new Object();
+    maxim.제품명 = "맥심 화이트 골드";
+    maxim.내용량 = "11.7g";
+    maxim.try = function(){
+      return parseFloat(this.내용량)*8 + "ml정도의 뜨거운 물을 부어 섭취";
+    };
+
+    console.log(maxim);
+    console.log(maxim.try());
+  });
+  
+  v_btns[2].addEventListener('click',function(){
+
+    //생성자 함수 정의 - 대문자 사용
+    function CustomObj(teamNm, headCnt, fanClub){
+      this.팀명 = teamNm;
+      this.인원수 = headCnt;
+      this.팬클럽명 = fanClub;
+      this['info'] = function(){
+        return this.팀명 + "(" + this.인원수 + "-" + this.팬클럽명 + ")";
+      }
+    }
+
+    //CustomObj의 첫번째 객체(인스턴스)
+    let instance1 = new CustomObj('아이유',1,'유애나');
+    // console.log(instance1);
+    // console.log(instance1.info());
+    
+    //CustomObj의 두번째 객체(인스턴스)
+    let instance2 = new CustomObj('비투비',6,'멜로디');
+    // console.log(instance2);
+    // console.log(instance2.info());
+
+    //생성자 함수 수정없이 속성 추가
+    instance1.히트곡 = '좋은 날'; //각 객체에 개별 속성 추가
+    // console.log(instance1.히트곡);
+    // console.log(instance2.히트곡); //추가되지않음,undefined
+
+    CustomObj.prototype.분류 = '가수'; //생성자 함수를 대상으로 공통 속성 적용
+    // console.log(instance1.분류);
+    // console.log(instance2.분류);
+
+    CustomObj.prototype.info2 = function(hitSong){
+      if(hitSong) this.히트곡 = hitSong;
+      // return this.분류 + " | " + this.팀명 + "(" + this.인원수 + ") - " + this.히트곡 + " | " + this.팬클럽명;
+      return `${this.분류} | ${this.팀명} (${this.인원수}) 💕 ${this.히트곡} | ${this.팬클럽명}`;
+      //ES6 백틱(`)기호를 사용해 '템플릿 리터럴'이라 불리는 문장을 작성할 수 있다.
+      //문자열과 변수를 하나의 영역에 기술할 수 있으며, 그때 변수는 ${} 안쪽에 기술한다
+    }
+    console.log(instance1.info2());
+    console.log(instance1.info2());
+    console.log(instance2.info2());
+    console.log(instance2.info2('그리워하다'));
+
+    //속성 및 메소드 삭제
+    console.log(instance1);
+    delete instance1.인원수;
+    console.log(instance1);
+    console.log(instance2);
+
+    console.log(instance2.info2());
+    delete CustomObj.prototype.info2;
+    console.log(instance1.info2());
+
+  });
+  
+  
+  
+  
+  
+  
+  
+</script>
