@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<body>
+  <div>&#44061;</div>
+</body>
+<script>
+
+  /*
+    문자열 String
+
+    기본타입은 객체가 아니며 속성과 메소드가 존재하지 않는 데이터이다.
+    문자열 변수를 선언시, 
+    자바스크립트 엔진은 내부적으로 new String()을 호출하여 임시적으로 기본타입은 래퍼객체로 변환한다.
+
+    자바스크립트에는 null과 undefined을 제외한 5가지 기본타입을 래핑하는 래퍼객체가 존재한다.
+    → 기본타입은 속성과 메소드를 정의할 수 없고, 래퍼 객체가 제공하는 속성/메소드만을 이용해 값을 처리할 수 있다.
+    → 원시 값 처리 과정 - 임시/암묵적으로 래퍼객채로 변환되어 처리 후 메모리에서 삭제되는 구조...
+  */
+
+  let v_str = "String객체는 원시타입인 문자열을 다룰 때 유용한 프로퍼티와 메소드를 제공하는 WRapper 객체";
+
+  // console.log( v_str.length );
+  // charAt(index) - index위치의 문자 반환, 없는 위치는 ("", 빈 문자)반환
+  // console.log( v_str.charAt(0) ); // S를 반환
+  // charCodeAt() - 대상 문자를 유니코드(아스키코드 포함)로 변환
+  // console.log( v_str.charAt(6).charCodeAt() ); // S
+
+  // Array 객체에서도 사용
+  // indexOf/lastIndexOf(data, start)
+  // 없으면 -1
+  console.log(v_str.indexOf('객', 7))
+  // console.log(v_str.indexOf('객', 7)); // 6, 53
+  // console.log(v_str.lastIndexOf('객', 52)); // 53, 6
+  // console.log(v_str.lastIndexOf('깩')); // -1
+  // console.log(v_str.lastIndexOf('깩, 5')); // -1
+
+  // concat() - 문자열 연결, +연산자와 같은 기능
+  let a = "a";
+  let b = "ppl";
+  let c = "e";
+  let abc1 = a.concat(b,c);
+  let abc2 = a.concat(b).concat(c);
+  // console.log(abc1[0],"|", abc2[4]); // a, e
+
+  // trim() - 유효한 정보 사이 공백은 유지, 앞뒤의 잉여 공백만 제거함
+  // let trimData = "          짱   구            ";
+  // console.log(trimData.length);
+  // let trimData2 = trimData.trim();
+  // console.log(trimData.length);
+
+  // replace(oldStr, newStr) - 첫번째 인자로 찾은 대상의 값을 두번째 인자로 치환
+  // 찾는 대상의 첫번째 항목만 대체
+  // let newStr = v_str.replace('객체', '오브젝트');
+
+  // 정규식 : 문자를 표현하는 공식, 특정 규칙이 있는 문자열을 검색하거나 치환하는 용도로 사용
+  // 플래그 g - global / i - case-insensitive
+  // v_str = v_str.replace(/객체/g, ' Object');
+  
+  // replaceAll(old,new) - 찾는 모든 대상을 치환
+  // let newStr2 = v_str.replaceAll('객체', '오브젝트');
+  // console.log(v_str);
+
+  // search(searchVal) - 찾는 문자열의 위치 index 반환 (indexOf와 동일, 없는 값은 -1반환)
+  // 정규식 사용이 차이점
+  // console.log( v_str.search(/R/) ); // indexOf와는 달리 검색시작점은 지정할 수 없음
+
+  // match() - 정규식으로 검색후 일치내용을 배열로 반환, 없는경우 null 반환
+  // let v_match - v_str.match(/r/); // 첫 번째 대상값만 반환
+  // let v_match = v_str.match(/r/gi); // 전역에서 대소문자 구분 없이 
+  // let v_match = v_str.match(/x/gi); // null
+  // console.log(v_match);
+
+  // substring(str, end 미포함) | slicestr, end 미포함 - 부분 문자열 추출
+  // substr(str, length) - 부분 문자열 추출
+  // (공통) end 생략시 대상값 끝가지 반환
+  // console.log( v_str.substring(0, 6) ) // String
+  // console.log( v_str.slice(51, 58) ) // Wrapper
+  // console.log( v_str.slice(51) ) // Wrapper Object
+  // console.log( v_str.substr(51, 7) ) // Wrapper
+  // console.log( v_str.substr(51) ) // Wrapper Object
+  // console.log( v_str.substr(-3) ) // ect
+  // console.log( v_str.slice(-5) ) // bject
+  // split(seperate) - 구분자로 문자열을 분리해 배열로 반환
+  // console.log( v_str.split() ); // 구분자 생략시 통째로
+  // console.log( v_str.split("") ); // 문자단위로 쪼갬
+  console.log ( v_str.split(" ",4) ); // 공백으로 구분된 단어 단위로 쪼갬
+
+
+</script>

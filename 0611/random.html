@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<script src="../jsFolder/random.js"></script>
+<script>
+  /* Math - 수학적인 상수와 함수를 위한 속성과 메소드를 가진 내장 객체 
+      static으로 미리 만들어져 있고 new를 쓰지 않는다.
+  
+    random()를 사용한 난수 생성
+    난수 - 정의된 점위내에서 무작위로 추출된 수
+  */
+
+  // 0.0 <= Math.random() < 1
+  console.log( Math.random() ); // 1미만의 난수 발생
+  console.log( Math.floor(Math.random()) ); // 내림처리
+  console.log( Math.ceil(Math.random()) ); // 올림처리
+  console.log( Math.round(Math.random()) ); // 반올림처리
+
+  // 난수발생      0.46  0.96  0.63  0.84  0.003
+  //   *10         4.6   9.6   6.3   8.4   0.03
+  // 올림 ceil       5    10    7     9     1
+  // 내림 floor      4     9    6     8     0
+
+  // 1 ~ 10 ceil
+  console.log( Math.ceil(Math.random() *10 ) );
+
+  // 0 ~ 9 floor
+  console.log( Math.floor(Math.random() *10) );
+
+  // 1 ~ 10 floor
+  console.log( Math.floor(Math.random() *10)+1 );
+
+  // 4 ~ 9 까지 난수 발생
+  console.log( Math.floor(Math.random()*6)+4 );
+
+  // 65 ~ 100 까지 난수 발생
+  console.log( Math.floor(Math.random() * 36) +65 );
+
+  // 공식 이용하기
+  console.log( "[65~100]", f_random(65,100) );
+
+</script>

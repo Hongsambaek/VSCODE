@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+div{
+  border: 2px solid teal;
+}  
+</style>
+</head>
+<body>
+  <div id="parent">
+    <span>디브안에 스팬1</span>
+    <span>디브안에 스팬2</span>
+    <span>디브안에 스팬3</span>
+  </div>
+
+<pre>
+[Node관계]
+-parentNode
+-childNodes
+-firstchild(firstElementChild)
+-lastchild(lastElementChild)
+-nextSibling(nextElementSibling)
+-previousSibling(-previousElementSibling)
+</pre>
+
+<script>
+  let v_parent = document.querySelector('#parent');
+  let v_child =  document.querySelectorAll('span'); //유사배열
+  
+  console.log( v_child[1].parentNode );
+  console.log( v_parent.childNodes[5] );          // NodeList(7)
+  console.log( v_parent.children[2] );            // HTMLCollection(3)
+  console.log( v_parent.firstChild );             // "\n"
+  console.log( v_parent.firstElementChild );      // 디브안에 스팬1
+  console.log( v_child[1].previousSibling );      // 디브안에 스팬3
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

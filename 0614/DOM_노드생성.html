@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+div{
+  border: 2px solid teal;
+}  
+</style>
+</head>
+<body>
+  <div id="parent">
+    <span>디브안에 스팬1</span>
+    <span>디브안에 스팬2</span>
+    <span>디브안에 스팬3</span>
+  </div>
+
+<pre>
+[Node 생성]
+- createElement()
+- createAttribut()
+- createTextNode()
+
+[Node 추가] 
+- appendChild(node) : 노드리스트의 마지막에 추가
+- insertBefore(node, 위치): 위치앞쪽에 추가, 위치null일때 appendChild와 동일
+- insertAdjacentElement(위치, element)
+- insertData(offset, data)
+- deleteData(offset, 삭제할 갯수)
+</pre>
+
+<script>
+  let v_parent = document.querySelector('#parent');
+  let v_child =  document.querySelectorAll('span'); //유사배열
+
+  // 요소 노드 생성
+  let tagP = document.createElement("p"); //<p></p>
+
+  // 속성 노드 생성
+  let addAttr = document.createAttribute("title");
+  addAttr.value = "타이틀속성의값";
+  console.log(addAttr);
+
+  // 속성노드를 요소노드에 추가하기
+  tagP.setAttributeNode(addAttr);
+  console.log( tagP );
+
+  // 텍스트노드 생성
+  let addTxt = document.createTextNode("모올루~?");
+  console.log( addTxt );
+
+  // 텍스트노드를 요소노드에 추가하기
+  tagP.appendChild(addTxt);
+  console.log( tagP );
+
+  // 완성된 요소 부모영역에 추가하기
+  // v_parent.appendChild( tagP );
+  // v_parent.insertBefore(tagP, null); // appendChild와 같이 영역의 마지막에 추가
+  // v_parent.insertBefore(tagP, v_parent.children[1]);
+  // v_parent.insertAdjacentElement("beforebegin",tagP);
+
+  // 텍스트노드에 새로운 텍스트 추가/삭제
+  // 부모기준점에서 마지막 자식요소(디브안스팬3)에 접근하기
+  // console.log( v_parent.childNodes[5] );
+  // console.log( v_parent.childNodes[v_parent.childNodes.length-2] );
+  // console.log( v_parent.childNodes[2] );
+  // console.log( v_parent.childNodes[v_parent.children.length-1] );
+  // console.log( v_parent.lastElementChild );
+
+  // 자식기준점(v_child변수 기준)에서 접근하기
+  console.log( v_child[2] );
+
+  let lastChild = v_parent.lastElementChild;
+  lastChild.firstChild.deleteData(0,2);
+  lastChild.firstChild.insertData(2,"(DIV)");
+
+  // '스팬'을 지우고 스팬이었던 위치에 'SPAN'
+  // lastChild.firstChild.deleteData(8,2);
+  // lastChild.firstChild.insertData(8,"SPAN");
+
+  lastChild.textContent = "쉽게바꿈 ^^"
+  lastChild.firstChild.nodeValue = "모올루~~? 나는???"
+
+</script>
+
+</body>
+</html>

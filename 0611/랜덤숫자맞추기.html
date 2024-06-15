@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" placeholder="1 ~ 100 사이 숫자 입력">
+  <h4><a href="javascript:f_numGuess()">숫자 맞추기</a></h4>
+
+  <div></div>
+
+  <script>
+
+    // 1 ~ 100 범위의 랜덤 수 생성하기
+    // const RND = Math.floor(Math.random()*100)+1;
+    const RND = Math.ceil(Math.random() * 100);
+
+    // 결과 정보 담을 변수
+    let v_cnt = 0; // 입력된 횟수
+    let v_str = []; // 입력된 값
+
+
+
+    function f_numGuess() {
+
+      let su = document.querySelector('input').value;
+      let v_disp = document.querySelector('div');
+
+
+      // 공백 문자 방지처리
+      // if(su.trim() == "") return; // 함수 종료
+      if (su.trim().length == 0) {
+        alert("수를 입력하시오.")
+        return; // 함수 종료
+      }    
+
+      // 문자열 제외
+      if (isNaN(su)) {
+        alert("잘못 입력된 값(숫자만 입력하시오.)");
+        return;
+      }
+
+      v_str.push(su);
+
+      if (su == RND) {
+        v_cnt++;
+
+        // Correct >> 맞춘 결과 출력 >> 맞추기까지 횟수,, 입력한 값
+        let result = "입력한 횟수 : " + v_cnt + "<br>";
+        result += "입력한 값 : " + v_str;
+
+        v_disp.innerText = ""; // 영역 초기화 후 (기존 출력된 힌트 지움)
+        v_disp.insertAdjacentHTML('beforeend', result);
+
+
+      } else if (su < RND) {
+        v_cnt++
+
+        // 힌트 제공 : 더 큰 수를 입력하시오.
+        v_disp.innerText = "힌트 : 더 큰 수를 입력하세요(" + v_cnt + ")";
+      } else {
+        v_cnt++
+
+        // 힌트 제공 : 더 작은 수를 입력하시오.
+        v_disp.innerText = `힌트 : 더 작은 수를 입력하세요(${v_cnt})`;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

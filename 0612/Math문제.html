@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>가위바위보 게임</button>
+  <button>로또</button>
+  <div></div>
+
+<script>
+  let v_btns = document.querySelectorAll('button');
+  let v_disp = document.querySelector('div');
+
+  v_btns[1].addEventListener('click', function(){
+
+    let v_lotto = [];  // 로또 번호 저장할 배열
+
+    // 로또 번호 생성 1 ~ 45까지 중복되지 않는 숫자 6ㄱ
+    for(let i = 0; i<6; i++) {
+      // 1 ~ 45 범위 랜덤수 발생
+      // Math.floor(Math.random()*45 + 1)  
+      const RND = Math.ceil(Math.random()*45);
+
+      // 중복 검증 - indexOf() 또는 includes()
+      if(v_lotto.indexOf(RND) == -1){ // 중복아닐 때
+        v_lotto[i] = RND;
+        console.log( "if>> ", v_lotto.indexOf(RND) + "," + RND);
+      }else {
+        // 중복으로 인해 6개미만의 랜덤수가 저장되었을 때 >> 해결
+        i -= 1; // 진행된 index복구
+        console.log( "else>> ", v_lotto.indexOf(RND) + "," + RND);
+      }
+    }
+    v_disp.innerText = v_lotto
+  })
+
+
+
+
+  v_btns[0].addEventListener('click', function(){
+
+    let v_arr = ['가위','바위','보'];
+    const RND = parseInt(Math.random()*3); // 0, 1, 2
+
+    // 랜덤으로 생성한 가위바위보
+    let v_com = v_arr[RND];
+    let v_user = prompt("입력", "가위바위보 중 하나만...")
+    console.log(v_com, " vs ", v_user);
+
+    let result = `${v_com} vs ${v_user} <br>`; // 출력결과 담을 변수
+
+    // 비교문
+    if(v_com == v_user) result += "Draw.";
+    else if(v_com == '가위' && v_user == '보' ||
+            v_com == '바위' && v_user == '가위' ||
+            v_com == '보'   && v_user == '바위') {
+      result += "Com Win !!";
+    }else {
+      result += "User Win !!"
+    }
+    v_disp.innerText = result;
+  });
+</script>
+</body>
+</html>

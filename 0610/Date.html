@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<script>
+  // console.log("현재날짜-국제표준시", new Date() );
+  // console.log("인수로 ms단위사용", new Date(3000) ); // 기준일시(1970.1.1.오전9시)에 + ms 의 시간이 표현
+  // console.log("문자열로 날짜 표현 ", new Date("2024.06.10"));
+  // new Date(year, month, date [, hours[, minutes[, seconds[,ms]]]])
+  // year 까지만 입력시 ms단위로 해석하기때문에 최소 month까지 적용하자.
+  console.log("각 인수로 날짜 표현 ", new Date(2024,6-1,10,10,19,30)); 
+
+  // console.log( new Date().toLocaleDateString() );
+  // console.log( new Date().toLocaleString() );
+  // console.log( new Date().toLocaleTimeString() );
+
+  // getTime() - 기준일(1970.1.1)로부터 지정된 날짜까지를 ms단위로 반환
+  let today = new Date();
+  today.getTime(); 
+  let todayMS = today.getTime(); // 기준일 ~ 오늘까지의 날짜를 ms 단위로 반환
+  let sec = todayMS/1000;
+  let min = sec/60;
+  let hour = min/60;
+  let date = hour/24;
+  let year = date/365;
+
+  console.log(year.toFixed( ) + "년 지남");
+  console.log(date.toFixed(2) + "일 지남");
+  console.log(hour.toFixed(4) + "시간 지남");
+
+  // getFullYear() - 1000~9999사이 값 반환
+  console.log( today.getFullYear() );
+  // getYear() - 1900년대를 대상으로 2자리 연도 정보를 제공, 현재 표준에서 제외됨
+  console.log( new Date("1999.12.12").getYear() );
+  
+</script>

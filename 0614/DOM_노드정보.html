@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+div{
+  border: 2px solid teal;
+}  
+</style>
+</head>
+<body>
+  <div id="parent">
+    <span>디브안에 스팬1</span>
+    <span>디브안에 스팬2</span>
+    <span>디브안에 스팬3</span>
+  </div>
+
+<pre>
+[Node 정보]
+- nodeName : 노드 고유의 이름 반환(읽기전용 속성 / get만 가능)
+- tagName : 요소 이름 반환
+- nodeValue, data : 노드의 값(요소 노드 내부의 text정보를 얻기 위해서는 textNode까지 접근되어야 함)
+- textContent : 노드의 값 반환(ElementNode까지만 접근해도 가능)
+- nodeType : 노드의 타입 
+</pre>
+
+<script>
+  let v_parent = document.querySelector('#parent');
+  let v_child =  document.querySelectorAll('span'); //유사배열
+
+  console.log( document.nodeType ); // 9
+  console.log( v_parent.nodeType ); // 1 - elementNode
+  console.log( v_parent.children[2].firstChild.nodeType ); // 3 - textNode
+
+  // console.log( v_parent.nodeName );
+  // console.log( v_child[0].nodeName );
+  // console.log( v_parent.tagName );
+  // console.log( v_child[0].tagName);
+
+  // console.log( v_parent.childNodes[0].tagName ); // undifined
+  // console.log( v_parent.childNodes[0].nodeName ); // #text
+  
+  // console.log( v_parent.children[2].firstChild ); // 디브안스팬3의 textNode
+  // console.log( v_parent.children[2].firstChild.nodeValue ); // 디브안스팬3
+  // console.log( v_parent.children[2].firstChild.data ); // 디브안스팬3
+  v_parent.children[2].firstChild.data = "값 변경"; // 디브안스팬3 => 값 변경으로 텍스트 변환
+
+  // console.log( v_parent.children[2] ); // 디브안스팬3의 ElementNode
+  // console.log( v_parent.children[2].textContent ); // 디브안스팬3
+  v_parent.children[2].textContent = "값 다시 변경"; // 디브안 스팬3 => 값 다시 변경으로 텍스트 변환
+
+</script>
+
+</body>
+</html>

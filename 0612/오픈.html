@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    팝업 - 기존 페이지 전환 방식이 아닌, 새 창을 추가해 새로운 정보를 갱신받는 목적의 페이지 표시 방식
+        
+    트래픽과 메모리 증가 및 팝업 블로킹 등의 악성공격으로부터 사용자를 보호하기 위해
+    대부분의 브라우저들이 기본적으로 팝업을 차단하는 기능을 적용하고 있으며,
+
+    현재 ajax통신과 spa형태의 발전으로 많이 사용되지 않고 모달 형식으로 많이 대체되었다.
+    모달: 같은 브라우저 내부에 상위레이어를 띄우는 방식으로 창을 종료하지 않으면 원래 창 화면은 작동되지 않음
+
+    경우에 따라 브라우저 별 팝업 차단에 대한 통제가 달라지며 유저에 의해 발생하는 경우만 팝업 허용
+    -->
+    <h4>열어준 창</h4>
+    <textarea id="old_text" rows="10" cols="30">멀티라인</textarea>
+    <br>
+    <input type="button" value="새창Open">
+    <input type="button" value="새창Close">
+    <input type="button" value="보내기">
+
+
+
+<script>
+  // window.open('//naver.com'); // 브라우저에 의해 차단됨 (기본적으로)
+
+  let newWin;
+  document.querySelector('input').addEventListener('click', function(){
+    // open(URL, TARGET(기본으로 설정, _blank) or NAME, SPECS)
+    // url만 지정시 팝업아닌 탭 형태로 페이지를 띄움
+    // 2번째 인자는 target 또는 name을 지정가능하며, 생략시 target =_blank이 기본값
+    // 2번째 인자로 name 지정시 창의 이름으로 등록되어 해당 창에만 반복해서 띄움
+    // spec중 높이/너비 지정시 브라우저에서 분리되어 표현
+    newWin = open('./새창.html', 'euntae', 'width=400 height=300 left=200 top=100');
+  });
+
+  document.querySelector('input:nth-of-type(2)').addEventListener('click', function(){
+    newWin.close(); // 열린창 닫기
+  });
+
+  let f_callback;
+  document.querySelector('[value="보내기]').addEventListener('click', f_callback = function(){
+    // 부모창의 textarea value정보를 자식창의 textarea로 출력
+    let oldTxtVal = window.document.querySelector('#old_text').value; // 부모창의 text정보
+
+    // 자식창 내부 문서의 textarea요소 얻고, 부모창 정보 대입하기
+    newWin.document.querySelector('#new_text').value = oldTxtVal;
+  });
+
+  // textarea영역에서 enter키 입력시 부모정보를 자식창에 출력하는 기능의 함수 호출
+  window.document.querySelector('#old_text').addEventListener('keydown', function(e){
+    // Enter 키가 눌리는 지 확인 필요
+    // console.log( e.key, e.keyCode ); // 'Enter' 또는 123
+
+    if(e.KeyCode == '13'){ // KeyCode 대문자표기 지킬것
+      // 기능을 가진 함수 호출
+
+    }
+  });
+
+  opener.document.addEventListener
+
+</script>
+</body>
+</html>
