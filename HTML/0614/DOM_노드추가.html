@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <title>Document</title>
 <style>
-div {
-  border: 2px solid purple;
+ #parent {
+  /* 웹 표준에서 id중복은 허용되지 않으나 스타일은 별도로 에러를 ;발생기키지 않고 모두 적용시킴*/
+  /* 하지만 스크립트에서는 예외다... 하나의 id만 적용ㄷ상이 되며, 가정 선순위로 작성된 대상에 한함 */
+  border: 2px solid teal;
 }
 </style>
 </head>
@@ -73,9 +75,14 @@ div {
   
   // v_body.appendChild(clnTrue); //노드만 가능
   // v_body.append(clnTrue); //노드와 돔스트링 가능
-  v_body.insertBefore(clnFalse, v_body.firstChild);
+  // v_body.insertBefore(clnFalse, v_body.firstChild);
+  v_body.insertBefore(clnFalse, v_parent);
 
+  // id 중복시 최상단 요소만 유일성을 인정받음
+  // document.querySelector( '#parent' ).style.borderColor='blue';
 
+  // 복사되는 원형이 v_parent에 들어있음
+  v_parent.style.borderColor = 'skyblue';
 
 </script>
 </body>

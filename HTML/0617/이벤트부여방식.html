@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 방식1. 인라인 방식 - 보통 테스트 용도로 씀 -->
+  <button onclick="alert();">인라인방식</button>
+  <button>이벤트핸들러방식</button>
+  <button>이벤트리스너방식</button>
+
+<script>
+  let v_btns = document.querySelectorAll('button');
+/* 
+    방식2. 이벤트 핸들러 - 사건(event action)과 그의 대한 동작을 핸들러라고 함
+    >> 하나의 요소에 하나의 이벤트 처리(=여러 이벤트 적용시 마지막 항목만 실행)
+
+    웹 문서에서 이벤트 발생시 어떤 함수를 실행할 지 웹 브라우저에 알려야 함
+    이때, 이벤트와 처리함수를 연결해주는것을 '이벤트 처리기' 또는 '이벤트 핸들러'라 한다
+    이벤트처리기(이벤트핸들러)는 이벤트 앞에 'on'을 붙여 사용함
+
+
+    요소.on이벤트 = 함수
+*/
+  let v_count = 0;
+
+  v_btns[1].onclick = function(){
+    alert("이벤트핸들러111");
+  }
+  v_btns[1].onclick = function(){
+    alert("이벤트핸들러222");
+    v_count++;
+    console.log(v_count+ "회 실행됨(이벤트핸들러)");
+
+    // (주의) 함수 내부에서 addEventListener사용시 의도와 다르게 여러번 실행될 수 있음
+    v_btns[2].addEventListener('click', function(){
+      alert( v_count + "회 만큼 실행(이벤트리스너)")
+    });
+  }
+
+/* 
+  방식3. 이벤트 리스너 - 이벤트 감지시 인자로 받은 함수를 실행
+  >> 하나의 요소에 복소의 이벤트 처리(=이벤트큐에 순차적으로 쌓아두고 모두 실행)
+
+  요소.addEventListener('이벤트', 함수)
+*/
+  v_btns[2].addEventListener('click',function(){
+    alert("이벤트리스너111");
+  });
+
+  v_btns[2].addEventListener('click',function(){
+    alert("이벤트리스너222");
+  });
+
+
+</script>
+  
+  
+  
+</body>
+</html>

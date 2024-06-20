@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- style요소는 head영역안쪽에서 meta뒤에 자유롭게 배치가능 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      display: none;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    function clk(p_this) {
+      console.log(p_this);
+      // p_this.style.display = "none";
+      // p_this.css('display','none'); // type-Error발생-DOM객체에 jQuery메소드 사용불가
+      $(p_this).css('display', 'none'); // 대상에 맞는 속성, 메소드 사용하기
+    }
+
+    // js방식 요소 숨김처리
+    document.addEventListener('DOMContentLoaded', function () {
+      let v_h2a = document.querySelectorAll('h2');
+      let v_btn = document.querySelector('button');
+      let v_count = 0;
+      // 한놈만 패면서 클릭 이벤트 주기 (모든 대상에 순차적으로 클릭이벤트를 부여함)
+      for (let i = 0; i < v_h2a.length; i++) {
+        v_h2a[i].addEventListener('click', function () {
+          // 클릭되는 대상을 숨김처리
+          this.style.display = "none";
+          v_count++;
+
+          // 모든 요소가 사라졌을때 버튼 보이기
+
+          console.log(v_h2a.length, v_count);
+
+          if (v_h2a.length == v_count) {
+            // 버튼 보이기
+            v_btn.style.display = 'inline';
+            v_count=0;
+          }
+        });
+      }
+      // 버튼대상으로 이벤트 부여하기
+      v_btn.addEventListener('click', function () {
+
+        // 숨겨졌던 요소 보이기
+        for (i = 0; i < v_h2a.length; i++) {
+          v_h2a[i].style.display = "block";
+        }
+        // 버튼은 숨기기
+        this.style.display = "none";
+      });
+    });
+
+
+  </script>
+</head>
+
+<body>
+  <!-- this: 자기참조변수, 예약어로서 대소문자 변형 안됨 -->
+  <!--   <h2 onclick="clk(this)">click Man1</h2>
+  <h2 onclick="clk(this)">click Man2</h2>
+  <h2 onclick="clk(this)">click Man3</h2> -->
+
+  <h2>click Man1</h2>
+  <h2>click Man2</h2>
+  <h2>click Man3</h2>
+  <button>Game을 시작하지....</button>
+</body>
+
+</html>

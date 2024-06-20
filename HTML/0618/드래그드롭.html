@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+div {
+  border: 1px dashed skyblue;
+  height: 200px;
+}
+img {
+  width: 100px;
+}
+
+</style>
+</head>
+<body>
+<!-- 
+  드래그 대상 요소
+  - draggable=true 적용
+  - dragstart 이벤트 적용 >> dataTransfer.setData()로 타겟 id 지정
+
+  *dataTransfer : 드래그-드랍에 필요한 객체, 데이터를 담는 역할
+
+  드롭 대상 요소
+  - dragover 이벤트 적용 >> 중첩된 상태를 중지시켜 드랍 허용상태로 만듦
+                          (기본적으로 요소는 중첩 불가)
+  - drop 이벤트 적용 >> dataTransfer.getData(id)로 타겟(드랍요소) 위치에 append() 처리
+-->
+  <div class="drop">드랍될 위치</div>
+  <img id="mokoko" src="../images/벛꽃모코코.png" alt="분홍모코코" draggable="true">
+
+  
+  <!-- 
+    draggable - 드래그 가능 여부를 boolean으로 지정, 생략시 기본 값 auto가 적용되는데,
+    >> href속성이 있는 a요소
+    >> src 속성에 경로가 올바르게 지정된 img요소
+    는 드래그 가능하며 그 외 항목은 드래그 불가 
+  -->
+
+  <hr>
+  <a id="smp1" href="">샘플1</a>
+  <a id="smp2" draggable="true">샘플2</a>
+  <img id="smp3" src="../images/모코코위 모코코.gif" alt="대체텍스트">
+  <li id="smp4" draggable="true">샘플4</li>
+  <span id="smp4">샘플5</span>
+
+
+<script>
+  let v_imgs = document.querySelectorAll('img');
+  let v_elmtAll = document.querySelectorAll('body *')
+
+
+  document.querySelector('#mokoko').addEventListener('dragstart',function(e){
+    // console.log(e.target.id);
+    // console.log(this.id);
+    // console.log(document.querySelector('#mokoko').id);
+
+    
+
+    e.dataTransfer.setData("targetId",e.target.id); // 타겟대상의 id정보를 데이터 트랜스퍼에 저장해둠
+  });
+
+  let v_drops = document.querySelectorAll('.drop');
+  for(let i=0; i<v_drops.length; i++) {
+    
+    document.querySelector('.drop').addEventListener('dragover', function(e){
+      e.preventDefault(); // dragover이벤트 상태를 중지시켜 드랍가능상태로 만듦
+    });
+  }
+
+
+  document.querySelector('.drop').addEventListener('drop',function(e){
+    let tgId = e.dataTransfer.getData('targetId')
+    console.log("드롭위치에서 정보 확인>>", tgId);
+    e.target.appendChild(document.querySelector('#'+tgId)); // id=mokoko인 요소 얻어서 append...
+  });
+
+</script>
+
+<!-- 숙제 : 여러 이미지 모두 드래그 드랍 완성하기
+     숙제추가: 여러 영역에 자유롭게 드래그 드랍 완성하기(선택) -->
+</body>
+</html>

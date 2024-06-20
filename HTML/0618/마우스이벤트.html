@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+div {
+  width: 70%;
+  height: 70vh;
+  border-style: solid;
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+  <div></div>
+
+<script>
+  // 마우스 좌중우 클릭 정보는 mousedown이벤트가 제공해준다 (클릭이벤트는 좌클릭정보만 줌)
+  document.querySelector('div').addEventListener('mousedown',function(e){
+  // document.querySelector('div').addEventListener('click',function(e){
+    console.log(e.button, " | ", e.which);
+    
+    if(e.button == 0) { // 좌클릭시 div영역의 외부> 앞에 정보 출력하기
+      this.insertAdjacentHTML("beforebegin","<mark>Left-Click</mark>");
+    }else if(e.button == 1) { // 우클릭시 div영역의 내부 앞/뒤에 정보 출력하기
+      this.innerHTML += "<mark>Center-Click</mark>";
+    }else{ // 우클릭시 div영역의 외부 뒤에 정보 출력하기
+      this.insertAdjacentHTML("afterend","<mark>Right-Click</mark>");
+      // this.outerHTML += "<mark>Right-Click</mark>";
+    }
+  });
+
+  // document.querySelector('div').addEventListener('contextmenu', function(){});
+  document.querySelector('div').oncontextmenu = function(e) {
+    e.preventDefault(); // 이벤트를 중지시켜 기능(contextmenu..)을 표현하지 못하게 함.
+  }
+
+</script>  
+  
+  
+</body>
+</html>

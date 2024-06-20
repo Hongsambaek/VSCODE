@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- style요소는 head영역안쪽에서 meta뒤에 자유롭게 배치가능 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      display: none;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+  $(function(){
+    let $h2a = $('h2');
+    // jQuery이벤트 부여 - on('이벤트', 함수)사용
+    $h2a.on('click',function(){
+      console.log(this);
+
+      // 숨기기 - display=none >> hide()
+      $(this).hide();
+      // 모든 대상 숨겨졌을 때 버튼 보이기
+      console.log( $('h2:visible').length );
+      if($('h2:visible').length == 0) {
+        // 버튼 보이기 - display=요소의 원 레벨정보 >> show()
+        $('button').show();
+      }
+    });
+
+    // 버튼에 이벤트 부여하기 - on()
+    $('button').on('click',function(){
+      // h2요소 보이기 - show()
+      $h2a.show();
+      // 버튼 숨기기 - hide()
+      $(this).hide();
+    });
+
+
+  });
+
+
+  </script>
+</head>
+
+<body>
+
+  <h2>JQ_click Man1</h2>
+  <h2>JQ_click Man2</h2>
+  <h2>JQ_click Man3</h2>
+  <button>😎Game을 시작하지....😎</button>
+</body>
+
+</html>

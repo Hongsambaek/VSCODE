@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+  // window.onload = function(){}
+  // window.addEventListener('load',function(){});
+  document.addEventListener('DOMContentLoaded',function(){
+
+    // js방식 >> 주유소 습격사건의 한놈만 패
+    // js방식으로 스타일 부여
+    let v_h4s = document.querySelectorAll('h4'); // 유사배열
+    // v_h4s[0].style.backgroundColor = 'teal';
+    for(i = 0; v_h4s.length; i++) {
+      v_h4s[i].style.backgroundColor = 'teal';
+    }
+  });
+
+  // $(document).ready(function(){}); // jQuery 버전 3.0에서 deprecate
+  $(function(){
+    let $h4s = $('h4');
+    $h4s.css('color', 'yellowgreen'); // 일괄적용
+    $h4s.eq(0).css('color','brown');
+    $h4s.eq(1).css('color','darkgreen');
+    $h4s.eq(2).css('color','darkblue');
+    $h4s.eq(3).css('color','darkred');
+  });
+  
+  
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h4>벛꽃모코코</h4>
+  <h4>개구리모코코</h4>
+  <h4>모코코안녕</h4>
+  <h4>씐나모코코</h4>
+</body>
+
+</html>

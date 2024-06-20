@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+#dropArea {
+  border: 4px ridge aquamarine;
+  height: 400px;
+}
+img {
+  width: 150px;
+}
+</style>
+</head>
+<body>
+  <ol id="fileList"></ol>
+  <div id="dropArea"></div> 
+
+<script>
+  let v_drop = document.querySelector('#dropArea');
+
+  v_drop.addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+  v_drop.addEventListener('drop',function(e){
+    e.preventDefault();
+
+    let v_files = e.dataTransfer.files; //여러개의 파일
+    console.log(v_files);
+
+    //여러개 선택되었어도 지정한 갯수만큼만 보여지게..
+    let v_limit = 5;
+    if(v_files.length > v_limit) alert(v_limit + "개 까지만 선택 가능");
+
+    //최대 갯수를 하드코딩 시 문제>> 최대 갯수보다 적은 파일이 선택되었을 때
+    for(let i=0; i<v_files.length; i++){
+    // for(let i=0; i<v_files.length; i++){ //권장
+
+      let rd = new FileReader();
+  
+      rd.onload = function(){
+        console.log(rd.result);
+  
+        let v_img = document.createElement('img'); //<img>
+        v_img.src = rd.result;
+        v_img.alt = "아무거나";
+        v_img.setAttribute('style','width: 150px');
+  
+        //리스트의 자식요소 생성
+        let v_li = document.createElement('li'); //<li></li>
+        v_li.innerText = v_files[i].name;
+        
+        console.log('index로 갯수 체크', v_drop.children.length, v_drop.childElementCount);
+        if(v_drop.children.length < v_limit){
+          document.querySelector('#fileList').appendChild(v_li);
+          v_drop.append(v_img); //추가로 드롭 완성
+        }
+      };
+      rd.readAsDataURL(v_files[i]); //대상이 없어서 에러발생
+    }
+  });
+
+  
+  
+  
+  
+  
+  
+  
+  
+  window.addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+  window.addEventListener('drop',function(e){
+    e.preventDefault();
+  });
+  
+  
+  
+
+</script>
+  
+  
+</body>
+</html>

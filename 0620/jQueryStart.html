@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 내부스크립트와 외부스크립트 영역을 분리해야 함(병행시 둘다 동작안함) -->
+
+<!-- 다운로드 방식 >> 프로젝트 내부에 저장해야되기 때문에, 파일의 관리가 필요하다, 경로설정도 주의 -->
+
+<!-- CDN 방식 >> 인터넷이 연결되어있을때만 사용 가능 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+  // Javascript 방식
+  // 창의 모든 리소스들을 로딩시킨 후에 함수를 실행하겠다
+  window.onload = function(){
+  }
+
+  //jQuery 방식
+  $(document).ready(function(){
+    // h4내부의 텍스트를 alert로 출력해보기
+    let v_h4_1 = document.getElementsByTagName('h4')[0];
+    let v_h4_2 = document.querySelector('h4');
+    // console.log(v_h4_1, v_h4_2);
+    alert("JS" + v_h4_2.innerText);
+
+    let $h4 = $('h4');
+    console.log($h4);
+    alert("JQ" + $h4.text());
+  });
+
+
+
+
+
+
+</script>
+
+<body>
+  <h4>Hello I'm AppleWatch</h4>
+</body>
+
+</html>

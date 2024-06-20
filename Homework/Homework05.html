@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 150px;
+}
+
+.drop1 {
+  border: 5px solid teal;
+  height: 150px;
+  margin: 50px;
+}
+
+.drop2 {
+  border: 5px solid mediumspringgreen;
+  height: 150px;
+  margin: 50px;
+}
+
+.drop3 {
+  border: 5px solid brown;
+  height: 150px;
+  margin: 50px;
+}
+
+.drop4 {
+  border: 5px solid darkseagreen;
+  height: 150px;
+  margin: 50px;
+}
+</style>
+</head>
+<body>
+  <!-- 숙제 : 여러 이미지 모두 드래그 드랍 완성하기
+  숙제추가: 여러 영역에 자유롭게 드래그 드랍 완성하기(선택) 
+  -->
+  <div class="drop1"></div>
+  <div class="drop2"></div>
+  <div class="drop3"></div>
+  <div class="drop4"></div>
+
+  <img id="mokoko1" src="https://ifh.cc/g/YSXCdt.png" alt="분홍모코코" draggable="true">
+  <img id="mokoko2" src="https://ifh.cc/g/Hf2bG6.jpg" alt="개구리모코코" draggable="true">
+  <img id="mokoko3" src="https://ifh.cc/g/TTPJkC.png" alt="코니" draggable="true">
+  <img id="mokoko4" src="https://ifh.cc/g/cd3x96.png" alt="모코코" draggable="true">
+
+<script>
+  document.querySelector('#mokoko1').addEventListener('dragstart',function(e){
+    e.dataTransfer.setData("targetId", e.target.id);
+  });
+  
+  document.querySelector('#mokoko2').addEventListener('dragstart',function(e){
+    e.dataTransfer.setData("targetId", e.target.id);
+  });
+
+  document.querySelector('#mokoko3').addEventListener('dragstart',function(e){
+    e.dataTransfer.setData("targetId", e.target.id);
+  });
+
+  document.querySelector('#mokoko4').addEventListener('dragstart',function(e){
+    e.dataTransfer.setData("targetId", e.target.id);
+  });
+
+  
+
+
+  document.querySelector('.drop1').addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+  
+  document.querySelector('.drop2').addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+
+  document.querySelector('.drop3').addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+
+  document.querySelector('.drop4').addEventListener('dragover',function(e){
+    e.preventDefault();
+  });
+
+  
+
+
+  document.querySelector('.drop1').addEventListener('drop',function(e){
+    let tgId = e.dataTransfer.getData('targetId')
+    console.log("드랍위치에서 정보 확인 >> ", tgId);
+    // location1++;
+    e.target.appendChild(document.querySelector('#'+tgId));
+  });
+
+  document.querySelector('.drop2').addEventListener('drop',function(e){
+    let tgId = e.dataTransfer.getData('targetId')
+    console.log("드랍위치에서 정보 확인 >> ", tgId);
+    e.target.appendChild(document.querySelector('#'+tgId));
+  });
+  
+  document.querySelector('.drop3').addEventListener('drop',function(e){
+    let tgId = e.dataTransfer.getData('targetId')
+    console.log("드랍위치에서 정보 확인 >> ", tgId);
+    e.target.appendChild(document.querySelector('#'+tgId));
+  });
+  
+  document.querySelector('.drop4').addEventListener('drop',function(e){
+    let tgId = e.dataTransfer.getData('targetId')
+    console.log("드랍위치에서 정보 확인 >> ", tgId);
+    e.target.appendChild(document.querySelector('#'+tgId));
+  });
+
+
+
+</script>
+
+</body>
+</html>

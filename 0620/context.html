@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    $('selector'[,context]) <br>
+    선택자를 검색할 범위 설정, 생략시 문서 전체에서 선택자를 검색
+  </div>
+
+  <form id="frm1">
+    <input type="text">
+  </form>
+
+  <form id="frm2">
+    <input>
+  </form>
+
+  <form id="frm3">
+    <input>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // $('input').css('background','gold');
+    $('input',$('#frm2'))
+      .css('background','teal')
+      .css('font-size','2em')
+      .css('color', 'brown');
+
+    $('form').on('click',function(){
+      $('input').css('background','white');
+      $('input', this).css('background', 'gold');
+    });
+  </script>
+</body>
+</html>
