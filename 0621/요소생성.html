@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" value="문자열로 일괄 생성하기">
+  <input type="button" value="요소만 생성 후 속성 지정하기">
+  <div></div>
+
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+  // 문자열로 일괄 생성하기
+  $('input').eq(0).on('click',function(){
+
+    let $pTag = $("<p title=\😎😎😎😎😎😎\" onclick='f_fnc(this)';>Hi~jQuery!!</p>");    
+    
+    // JS - innerHTML속성, JQ - html()
+    // $('div').html($pTag);
+    
+    // appendChild()는 자바스크립트 전용 메소드
+    // 제이쿼리에서 사용하는 append()는 태그로 해석(자바스크립트에서는 그냥 문자로만 표현)
+    $('div').append($pTag);
+    });
+
+    function f_fnc(p_this){
+      p_this.style.backgroundColor = "gold";
+      p_this.style.color = "brown";
+      $(p_this).css(backgroundColor, 'mediumblue');
+      $(p_this).css('color','yellow');
+    };
+
+
+
+    // 요소만 생성 후 속성 지정하기 - $("태그", {속성들})
+    $('input').eq(1).on('click',function(){
+
+      let $pTag = $("<p></p>",{
+        title  : '🌊🎈🎂',
+        'click': function(){
+          // 'onclick',function
+          // this.style.color = 'teal';
+          $(this).css('color','teal').css('text-shadow','2px 2px 10px orange');
+        },
+        "text" : '하이! 제이쿼리~'
+      });
+      $('div').append($pTag);
+    });
+  
+
+  /*
+      동적 요소 생성
+
+      javascript방식
+      1. document.createElement('element')
+      2. DOMString >> js 문자열 방식 "<element>"
+      ※ 추가시 appendChild(node만), append(node 와 DOMString), insertBefore(node만)
+      ※ append(DOMString)은 태그가 해석되지 못하고 그냥 문자열로 표현된다
+      ※ DOMString방식의 동적 요소는 innerHTML, insertAdjacentHTML() 등을 사용하기
+      이때 DOMString으로 표현된 태그는 해석되지 못함 (=그냥 문자열로 표현)
+
+      jQuery 방식
+      1. $("<요소 및 속성과 텍스트 정보 모두 기술>")
+      2. $("<요소만>",{속성과 텍스트를 객체 기술 방식(key:value)으로})
+      추가 시 append(), html() 을 사용
+      javascript와 jQuery에서 append() 사용은 태그로 해석됨의 차이점을 보임
+   */
+ 
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+.crlBrown {
+  color: brown;
+}
+.bgTurquoise {
+  background-color: turquoise;
+}
+.brTeal {
+  border: 3px dashed teal;
+  border-radius: 10px;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+  <input type="button" value="확인">
+
+  <p>click!!</p>
+  <p>click!!</p>
+  <p>click!!</p>
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('input').on('click',function(){
+    // p요소의 font 색상적용
+    // $('p').css('color','lightgreen') // 우선순위
+    $('p').addClass('crlBrown'); // 유지보수성이 높음(디자이너가 많이 쓰는 형태)
+
+  });
+
+  $('p').on('click',function(){
+    // $(this).addClass('bgTurquoise');
+
+    // if( $(this).hasClass('bgTurquoise') ){
+    //   // removeClass
+    //   $(this).removeClass('bgTurquoise');
+    // }else {
+    //   // addClass
+    //   $(this).addClass('bgTurquoise')
+    // }
+
+    $(this).toggleClass('brTeal');
+  });
+
+  
+</script>
+</body>
+</html>

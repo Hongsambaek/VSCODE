@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(function(){
+  // 'jQuery'글자가 포함된 span 요소
+  $('span:contains(jQuery)').css('color','blue');
+
+  // 'jQuery'글자가 포함되지 않은 span 요소
+  $('span:not(:contains(jQuery))').css('color','red');
+
+  // span이 있는 div
+  $('div:has(span)').css('border','4px ridge green').css('padding','10px');
+
+  // 아무것도 없는 빈 div
+  $(':empty').css('border', '2px dotted red').css('padding','20px');
+  // $(':empty').css({'border':'2px dotted gold','padding':'20px'});
+
+  // 자식이 있는(=부모인) p
+  $('p:parent').css('text-shadow','2px 2px 4px purple');
+
+});
+</script>
+</head>
+<body>
+  <h4>내용필터 :contains(text), :has(selector), :empty, :parent</h4>
+  <div>
+    <div></div>
+    <div>헬로~~<span>오늘도 즐겁게</span></div>
+    <p>Hello jQuery!!<span>Thanks, jQuery!</span></p>
+    <div>jQuery!!!!</div>
+    <span>쉬운 제이쿼리</span><br>
+    <p></p>
+  </div>
+</body>
+</html>

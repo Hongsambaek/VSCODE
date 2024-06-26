@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 100px;
+  height: 100px;
+}
+
+
+</style>
+</head>
+<body>
+  <h4>attr() 요소의 속성 정보 얻기/설정하기<br>
+   [파일 명 추출 후 title속성으로 설정하기 예제]
+  </h4>
+
+  <img src="../images/신나 모코코.gif" alt="신나모코코">
+  <img src="../images/팝콘각 모코코.gif" alt="팝콘모코코">
+  <img src="../images/모코코 만큼 화난다.gif" alt="샷건모코코">
+  <img src="../images/안녕!모코코.gif" alt="안녕모코코">
+  <img src="../images/개구리모코코.jpg" alt="개구리모코코">
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+
+  // Get >> html(), val(), attr() 공통적으로 첫번째 항목만 반환
+  console.log( $('img').attr('src') ); // 이미지 요소의 src속성값
+
+  // Set >> 모든 메소드가 일괄적용
+  // $('img').attr('alt', '대체텍스트');
+
+  // flie명 추출 후 title속성으로 설정하기
+  $('img').attr('title',function(i,v){
+
+    // console.log(i,v);
+
+  let v_src = $(this).attr('src') ;
+  console.log(v_src);
+
+  let startIdx = v_src.lastIndexOf("/") + 1;
+  let endIdx = v_src.lastIndexOf(".");
+    
+  // 파일명 추출하기 substring(str,end), slice(str,end)
+  let fileNm = v_src.slice(startIdx,endIdx);
+  console.log(fileNm);
+    
+  return fileNm;
+  });
+  
+  // 속성 제거
+  $('img').eq(2).removeAttr('src');
+  
+  $('img').eq(2).attr({
+    'src': '../images/벛꽃모코코.png',
+    'alt': '벛꽃모코코',
+    'title' : '나는 분홍모코코',
+    'style' : 'width=250px'
+  
+  })
+  
+</script>
+</body>
+</html>

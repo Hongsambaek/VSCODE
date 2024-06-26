@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+</head>
+<body>
+    <h4>사용자 정의 속성(User Defined Attributes)</h4> <!-- 속성 정의시 대문자 표기 안됌(카멜케이스x) 규칙 -->
+    <div yujin="유진" data-alias="별명" data-hobby="취미" data-message-code="jmt"></div>
+
+<script>
+    let v_div = document.querySelector("div");
+
+    // 임의로 정의된 속성은 점 연산자/배열식접근법/dataset으로 접근 안됌 (undefined)
+    // (참고. 임의 정의된 attribute는 DOM으로 반영되는 property가 없으므로 undefined을 반환)
+    console.log(v_div.yujin, v_div["yujin"], v_div.dataset.yujin); 
+    console.log(v_div); //log: 요소를 html형태의 트리구조로 표현
+    console.dir(v_div); //dir: 객체의 속성을 트리구조로 표시
+    console.log(v_div.attributes.yujin.value);
+    console.log(v_div.getAttribute('yujin')); // 만 가능
+    
+    // JS - dataset속성으로 접근하고 data키워드 생략
+    // getAttribute 가능
+    console.log(v_div.dataset.alias); 
+    console.log(v_div.dataset['hobby']);
+    console.log(v_div.dataset["messageCode"]); // 하이픈을 마이너스로 인식하기 때문에 camel기법으로 변경
+
+    // JQ - data(), attr() 메소드로 접근
+    console.log($(v_div).data('message-code')); // data키워드 생략 (kebab/camel 둘다 가능)
+    console.log($(v_div).attr('data-message-code')); //full attribute (속성값 원형 그대로)
+</script>
+</body>
+</html>

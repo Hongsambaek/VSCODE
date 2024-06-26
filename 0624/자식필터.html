@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+ul {
+  display: inline-block;
+}
+td {
+  padding: 10px;
+}
+</style>
+<script>
+$(function(){
+  // 서로 다른 대상(부모)에 속한 각 요소의 첫번째/마지막 항목
+  $('li:first-child').css('color','purple');
+  $('li:last-child').css('color','blue');
+  
+  // first()는 대상요소 전체 중 첫번째 항목
+  $('li').first().css('border-style','dotted');
+  $('li').last().css('border-style','solid');
+  
+  // 테이블에 배경색 넣기
+  // child관련 속성 index 1부터 시작
+  $('td:last-child').css('background','olive');
+  $('td:nth-child(3)').css('background','gray');
+  
+  // 배수 칸마다+시작위치
+  $('td:nth-child(3n+2)').css('background','red'); // 배수 자리에 색 채움
+  
+  // 레이어 구조상 td가 tr을 덮음
+  // $('tr:first-child').css('background','gold');
+  $('tr:first-child td').css('background','gold');
+  $('tr:nth-child(3) td').css('background','gold');
+  
+  // slice()의 index출발값은 0부터
+  $('tr:nth-child(3) td').slice(2,7).css('background','navy');
+  
+  // 행 기준 홀수,짝수
+  $('tr:nth-child(odd) td').css('background','black');
+  $('tr:nth-child(even) td').css('background','pink');
+  // 열 기준 홀수,짝수
+  $('td:nth-child(odd)').css('background','black');
+  $('td:nth-child(even)').css('background','pink');
+  
+  // only-child
+  $('table:only-child').css('border','5px dashed orange');
+});
+  </script>
+</head>
+<body>
+  <h4>자식필터</h4>
+  <ul>
+    <li>first-child1</li>
+    <li>last-child1</li>
+    <li>nth-child1</li>
+    <li>only-child1</li>
+  </ul>
+  <ul>
+    <li>first-child2</li>
+    <li>last-child2</li>
+    <li>nth-child2</li>
+    <li>only-child2</li>
+  </ul>
+
+  <hr>
+  
+  <div>
+    <table border="1">
+      <tr>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

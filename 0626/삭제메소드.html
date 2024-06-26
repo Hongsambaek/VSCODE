@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+div {
+  background-color: turquoise;
+  height: 25px;
+}
+
+p {
+  border: 2px solid brown;
+}
+
+</style>
+</head>
+<body>
+  <button>empty</button>
+  <button>remove</button>
+  <button>remove(select)</button>
+
+  <div>
+    <p>Hello jQuery</p>
+  </div>
+  <div>
+    <p>Hi jQuery</p>
+  </div>
+  <p>안녕하세요 jQuery</p>
+  <p id="pp">jQuery입니다</p>
+
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  let v_btns = $('button');
+
+  v_btns.eq(0).on('click', function(){
+    // empty - 선택자의 자식요소만 비움
+    $('div').eq(0).empty();
+  });
+
+  v_btns.eq(1).on('click', function(){
+    // remove - 선택자와 그 자식요소 모두 지움
+    $('div').eq(1).remove();
+  });
+  v_btns.eq(2).on('click', function(){
+    // 대상요소.remove(selector) - 대상요소 중 selector로 지정된 특정한 항목만 지움
+    $('p').remove('#pp');
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type="checkbox" id="chkAll">전체선택 <br>
+    <input type="checkbox" class="chk">1 <br>
+    <input type="checkbox" class="chk">2 <br>
+    <input type="checkbox" class="chk">3 <br>
+    <input type="checkbox" class="chk">4 <br>
+    <input type="checkbox" class="chk">5
+  </div>
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('#chkAll').on('click',function(){
+    // console.log( $('#chkAll').attr('checked') );
+
+    let allChk = $('#chkAll').prop('checked'); // boolean
+    $('.chk').prop('checked',allChk);
+  });
+
+  // 개별 선택으로 전체 체크박스 제어
+  $('.chk').on('click',function(){
+    let boxCnt = $('.chk').length;
+    let chkCnt = $('chk:checked').length;
+
+    console.log(boxCnt, " | ", chkCnt);
+    
+    if(boxCnt == chkCnt) {
+      // 전체선택을 체크하기
+      $('#chkAll').prop('checked',true);
+    }else {
+      // 전체선택을 해제하기
+      $('#chkAll').prop('checked',false);
+    }
+
+
+
+  });
+  
+  
+  
+  
+  
+</script>
+</body>
+</html>

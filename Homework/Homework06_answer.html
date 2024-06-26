@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>Checking Hobby</h4>
+
+<span>Hobby: </span>
+<input type="checkbox" name="Hobby" value="여행">여행
+<input type="checkbox" name="Hobby" value="요리">요리
+<input type="checkbox" name="Hobby" value="축구">축구
+<input type="checkbox" name="Hobby" value="야구" checked>야구
+<input type="checkbox" name="Hobby" value="레이싱">레이싱
+<input type="button" value="선택">
+
+<script>
+  document.querySelector('[type="button"]').addEventListener('click',function(){
+    
+    let v_hobby = [];
+    let v_chk = document.querySelectorAll('[type="checkbox"]');
+    for(let i = 0; i<v_chk.length; i++) {
+      
+      if(v_chk[i].checked) {
+        // 배열 변수에 체크 항목만 추가
+        v_hobby.push(v_chk[i].value);
+      }
+    }
+    document.querySelector('div').innerHTML = "나의 취미는 → " + v_hobby;
+  });
+</script>
+
+<hr>
+  <span>봄소식 : </span>
+  <select id="sel" multiple size="5">
+    <option>벛꽃</option>
+    <option>개구리</option>
+    <option selected>새싹</option>
+    <option>신나</option>
+    <option>팝콘</option>
+  </select>
+  <button>Choose</button>
+
+<script>
+  // document.querySelector('button').addEventListener('click',function(){});
+  document.querySelector('button').onclick = function(){
+
+    let spring = [];
+    let v_opt = document.querySelectorAll('#sel option');
+    for(let i = 0; i<v_opt.length; i++){
+      if(v_opt[i].selected) {
+        // 선택항목만 정보 넣기
+        spring[spring.length] = v_opt[i].innerText;
+      }
+    }
+    document.querySelector('div').innerText = "모코코의 모양은 → " + spring;
+  };
+
+
+
+
+</script>
+
+
+
+<div id="hobby"></div>
+</body>
+</html>

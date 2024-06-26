@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>:checked :selected</h4>
+  <span>취미: </span>
+  <input type="checkbox" value="여행">여행
+  <input type="checkbox" value="v-log">v-log
+  <input type="checkbox" value="베이킹">베이킹
+  <input type="checkbox" value="축구">축구
+  <input type="checkbox" value="야구" checked>야구
+  <input type="button" value="선택">
+  <div></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- 원래 위치 -->
+<script>
+  $(':button').on('click',function(){
+
+    // 선택한 항목을 변수에 모두 담아 최종 출력
+    let hobby = []; // 변수 선언
+
+    // 입력양식선택자 : 상태필터
+
+                                        // this를 대신하여 사용하지 않을 경우 변수 선언할 필요 없음
+                                        // 두 번째 인자만 사용하고 싶어도 두 개의 매개변수를 모두 선언해야 함(각 위치별 정보 다름)
+    $(':checkbox:checked').each(function(i,v){ // 사용하지 않을때는 변수를 정의할 필요가 없다
+      // console.log( $(this).val() ); // 콜백함수의 두번째 인자도 동일한 결과 반환
+      // console.log( $(v).val() );
+      hobby.push( $(v).val() );
+      // hobby[i] = $(this).val();
+    });
+    console.log("내 취미는 " + hobby);
+    $('div').append("취미는 " + hobby);
+  });
+</script>
+
+  <hr>
+  <span>봄소식 : </span>
+  <select id="sel" multiple size="5">
+
+    <!-- option 선택 -->
+    <!-- <option>Choose</option> -->
+    <option>벛꽃</option>
+    <option>개구리</option>
+    <option selected>새싹</option>
+    <option>신나</option>
+    <option>팝콘</option>
+  </select>
+  <button>Choose</button>
+
+
+<script>
+  
+  // $('select').on('change',function(){
+  //   // selectbox(combobox)의 단일정보는 value 속성으로 간단히 받을 수 있음.
+  //   if($(this).val() == 'Choose') return;
+  //   alert( $(this).val() );
+  // });
+
+  $('button:button').on('click',function(){
+    let spring = [];
+    // alert("Where?");
+    
+    $('select option:selected').each(function(){
+      console.log( this.value ); // $(this).val()
+      spring.push( $(this).val());
+    });
+    
+    $('div').text("");
+    $('div').append("봄 : " + spring);
+    
+  });
+</script>
+
+</body>
+</html>

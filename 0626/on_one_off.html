@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+.sttBg {
+  background-color: black; 
+  color: white;
+}
+.dynmBg {
+  background-color: hotpink; 
+  color: lime;
+}
+.fontGold {
+  color: gold;
+} 
+</style>
+</head>
+<body>
+  <!-- data {key:value}형태로 작성후 event객체의 data속성으로 key에 접근하여 값을 얻음(ex. e.data.key) -->
+  <p>on(event[,selector][,data],fn) / one(event[,data],fn) / off(event[,selector][,fn])</p>
+  
+  <button>제거</button>
+  <!-- <button></button> -->
+  <!-- <button></button> -->
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  // 정적 대상 이벤트 부여하기
+  // on(event[,Childselector][,data],fn)
+  $('p').on('mouseover',{'static': '정적대상'},function(e){
+    $(this).addClass('sttBg');
+    $(this).text(e.data.static);
+  });
+
+  // 동적 대상 화면에 추가하기
+  $("<p>동적인 p요소</p>").appendTo($('body'));
+  
+  
+  
+  
+  // 동적 대상 이벤트 부여하기
+  
+
+</script>
+</body>
+</html>

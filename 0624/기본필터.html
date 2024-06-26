@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+li {
+	margin: 4px;
+}
+
+</style>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+
+	// first,last,eq,lt,gt필터는 메소드로 대체 사용 권장
+	
+	// $('li:first, li:last').css('background-color', 'yellow');
+	$('li').last().css('background','green').css('text-align','left');
+	
+	// $('li:eq(4)').css('font-style', 'italic');
+	$('li').eq(4).css('color', 'red');
+
+	// index로 지정된 영역은 포함하지 않음
+	// $('li:lt(4)').css('color', 'teal'); // 4보다 작은 영역
+	// $('li:gt(4)').css('color', 'brown'); // 4보다 큰 영역
+
+	// slice(start, end 미포함/생략시 끝까지 적용)
+	$('li').slice(0,4).css('color', 'mediumblue').css('fontWeight','bold'); // 카멜 표기법
+	$('li').slice(5).css('color', 'orange').css('text-decoration','underline'); // 케밥 케이스
+	
+	// index 기준으로 홀수 / 짝수 구분
+	$('li:odd').css('border-style','inset');
+	$('li:even').css('border-style','dashed');
+	$('li:not(.not)').css('textDecoration','line-through');
+});
+</script>
+<body>
+  <h4>기본필터</h4>
+  <ul>
+    <li>:first</li>
+    <li>:last</li>
+    <li>:eq(index)</li>
+    <li>:gt(index)</li>
+    <li>:lt(index)</li>
+    <li class="not">:even</li>
+    <li class="not">:odd</li>
+    <li class="not">:not(select)</li>
+  </ul>
+</body>
+</html>

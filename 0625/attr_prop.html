@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input value="점메추">
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+$('input').on('keyup',function(){
+  
+  // attribute은 html요소들에 적용하는 정보로서 값은 변하지 않은 정적 상태 제공
+  console.log("1" + this.getAttribute('value') );
+  console.log("2" + $(this).attr('value') );
+  
+  // property는 DOM요소들에 적용된 정보로서 값이 변하는 동적 상태 제공
+  console.log("3" + this.value );
+  console.log("4" + $(this).prop('value') );
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document</title>
+</head>
+<body>
+
+<h4>성별선택</h4>
+<span>gender:</span>
+<input type="radio" name="gender" value="남자" checked>남자
+<input type="radio" name="gender" value="여자">여자
+<input type="button" id="genderButton" value="선택">
+<div id="gender"></div>
+<script>
+  let v_gender = document.querySelectorAll('input[name="gender"]');
+  let gender_button = document.querySelector('#genderButton');
+
+  gender_button.addEventListener('click', function() {
+    let gender = '';
+
+    v_gender.forEach(function(input) {
+      if (input.checked) {
+        gender = input.value;
+      }
+    });
+
+    document.querySelector('#gender').innerHTML = gender;
+  });
+</script>
+
+<hr>
+
+<h4>Checking Hobby</h4>
+
+<span>Hobby: </span>
+<input type="checkbox" name="Hobby" value="여행">여행
+<input type="checkbox" name="Hobby" value="요리">요리
+<input type="checkbox" name="Hobby" value="축구">축구
+<input type="checkbox" name="Hobby" value="야구" checked>야구
+<input type="checkbox" name="Hobby" value="레이싱">레이싱
+<input type="button" id="hobbyButton" value="선택">
+<div id="hobby"></div>
+
+<script>
+  let v_hobby = document.querySelectorAll('input[name="Hobby"]');
+  let hobby_button = document.querySelector('#hobbyButton');
+
+  hobby_button.addEventListener('click', function() {
+    let hobby = [];
+
+    v_hobby.forEach(function(input) {
+      if (input.checked) {
+        hobby.push(input.value);
+      }
+    });
+
+    document.querySelector('#hobby').innerHTML = hobby.join(', ');
+  });
+</script>
+
+</body>
+</html>

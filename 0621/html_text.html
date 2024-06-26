@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+
+  $('[value="text"]').on('click',function(){
+    // text() - js innerText 대체
+    // 모든 요소를 대상으로
+    // 태그를 제외한 정보를 얻음
+    console.log( $('p').text() );
+    $('p').text("<mark>Mokoko</mark>");
+  })
+
+  $('[value = "html"]').on('click',function(){
+    // html() - js innerHTML 대체
+    // 모든 요소 중 첫번째만 대상으로
+    // 태그를 포함한 정보를 얻음
+    console.log( $('p').html() );
+    $('p').html("<mark>Mokoko2</mark>");
+  });
+
+  $("[value=\"val\"]").on('click', function(){
+    // val() - js value 대체 (value : 입력양식요소의 정보 get/set 속성)
+    // 모든 요소 중 첫 번째만 대상으로 값을 얻음
+    console.log( $('input').val() );
+    $('input').val("일괄로 다바뀜");
+  });
+})
+</script>
+
+<body>
+  <p>1<span>༼ つ ◕_◕ ༽つ</span></p>
+  <p>2<span>༼╰(*°▽°*)╯</span></p>
+  <p>3<span>(╯°□°）╯︵ ┻━┻</span></p>
+
+  <input type="button" value="text">
+  <input type="button" value="html">
+  <input type="button" value="val">
+  <hr> <!-- 구분선 -->
+  <button>each - 반복적으로 요소얻기</button>
+  <button>each - 요소의 정보얻기</button>
+  <hr>
+  <button>선택자 대상 each</button>
+  <button>객체 대상 each</button>
+
+<script>
+  $('button').eq(0).on('click',function(){
+
+    // each() - 대상요소의 갯수만큼 반복적으로 함수를 호출
+    
+    // 선택자 대상 each() - $('선택자').each(fnc)
+    $('p').each(function(index, item){
+      // index = 1;
+      // console.log("ㅇ_ㅇ ?? " + index); 
+      // console.log( $('p') ); // 모든 p요소를 반환 → 3회에 걸쳐서
+      // console.log( $('p').length ); // 요소의 갯수
+
+      // console.log( this ); // 순차적인 p요소 반환 → 3회에 걸쳐 각 요소 반환
+      // console.log( item ); // 순차적인 p요소 반환
+      // console.log(index); // 순차적인 index반환
+      console.log( $('p').eq(index) ); // 모든 p요소(3개)반환
+    });
+    
+    $('button').eq(1).click(function(){});
+      $('p').each(function(i,v){
+        // console.log($('p')); // 모든 p요소 (3개)를 3회에 걸쳐 콘솔로 출력
+        // console.log($('p').text()   ); // 모든 p요소의 내부정보(tag는 제외)가 표현됨 3회에 걸쳐서
+        // console.log($('p').html()   );  // 모든 p요소 중 첫번 째 요소만 태그를 포함하여 표현
+
+        // p요소들의 순차적인 정보 제공
+        console.log( $('p').eq(i).html() );
+        console.log( $(this).html() );
+        console.log( $(v).html() );  
+    });  
+  });
+
+  // 대상에 따른 each() 문법 차이
+  // $('선택자').each(fnc)
+  // $.each(객체,fnc)
+
+  $('button').eq(2).on('click',function(){
+
+
+
+  });
+
+
+  $('button').eq(3).on('click',function(){
+
+    let obj = {
+      'a': 'apple',
+      "b": 'banana',
+      c: 'carrot'
+    };
+
+    let arr = ['SGWannabe', 'SG워너비', '죄와 벌', 201];
+
+
+    // 객체(배열포함) 대상 each()
+    $.each(arr,function(i,v){
+      // console.log(this[0]); // 객체의 순차적인 속성을 제공 (String 타입으로, 객체)
+      console.log(v[0]); // 객체의 순차적인 속성을 제공, string, 기본타입 문자열 제공
+      console.log(i); // 객체의 key, 배열의 index
+    });
+   
+    // 선택자대상 문법에 객체는 적용가능
+  });
+
+  $.each('p',function(){
+    console.log(this);
+  });
+
+
+</script>
+</body>
+</html>

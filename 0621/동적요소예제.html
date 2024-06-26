@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 150px;
+  height: 150px;
+}
+
+</style>
+</head>
+<body>
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    let v_btn2 = $("<button>이미지 추가버튼</button>");
+    $('body').append(v_btn2);
+    
+    let v_btn1 = document.querySelector('button');
+    $(v_btn2).on('click', function(){
+      // 이미지요소 추가 일괄 생성하기
+      // 이벤트는 외부 함수를 호출했음
+      let v_img = $("<img src = '../images/팝콘각 모코코.gif' alt='팝콘각모코코!' onclick=fnc(this)>");
+      $('body').append(v_img);
+      
+      // 이미지 요소 분리 생성하기
+      let v_img2 = $("<img>",{
+        src : '../images/모코코 만큼 화난다.gif',
+        alt : '샷건모코코',
+        click : function(){
+          $(this).css('border', '3px dotted green');
+        }
+      })
+      $('body').append(v_img2);
+    });
+    
+    function fnc(p_this){
+      $(p_this).css('border', '3px dotted teal');
+    }
+    
+    
+  </script>
+<div></div>
+</body>
+</html>

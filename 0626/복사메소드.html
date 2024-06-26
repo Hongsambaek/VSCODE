@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="p1">인수로 true설정시 이벤트처리기도 함께 복사</p>
+  <input type="button" value="clone()">
+  <input type="button" value="clone(true)">
+  <div></div>
+  
+  
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('#p1').on('click',function(){
+    $(this).css('font-size', '+=1px');
+  });
+
+  $('input').eq(0).on('click',function(){
+    // 얕은 복사 - 요소만 복사
+    let c1 = $('#p1').clone(); // 복사하고 선택
+    // 짝꿍처럼 붙여넣기 기능 필요 - append()
+    $('div').append(c1);
+  });
+
+  $('input').eq(1).on('click',function(){
+    // 깊은 복사 - 요소의 이벤트처리기까지 복사
+    let clt = $('#p1').clone(true); // 복사
+    $('div').append(clt);
+  });
+
+</script>
+</body>
+</html>

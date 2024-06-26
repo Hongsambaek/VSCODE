@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>
+  indexOf() 중복되지 않은 정수 5개 입력하기
+  </h4>
+  <input type="button" value="정수" onclick="f_fnc()">
+  <div id="Integer"></div>
+  <script>
+    let v_result = document.querySelector('input');
+
+    v_result[2].addEventListener('click',function(){
+
+      let int_arr = [];
+      
+      for(;;) {
+        let v_num = prompt("수를 입력하시오.");
+        
+        if(v_num == null) break;
+
+        if(v_num.trim().length !=0) {
+
+          if(!int_arr.includes(v_num)) {
+            int_arr[int_arr.length] = v_num;
+          }else {
+            alert("정.수.중.복");
+          }
+          if(int_arr.length == 5) break;
+        }
+      }
+      document.querySelector('div').innerText = int_arr;
+    });
+    
+
+  function f_fnc() {
+    let int_arr = [];
+
+    while(int_arr.length<5) {
+      let v_su = prompt("정수 입력");
+      let no = parseInt(v_su);
+
+      if(!isNan(no) && int_arr.indexOf(no) == -1) {
+        int_arr.push(no);
+      }else {
+        alert("중복되지 않은 정수 5개")
+      }
+    }
+    document.querySelector('#Integer').innerText = int_arr;
+  }
+
+  </script>
+</body>
+</html>

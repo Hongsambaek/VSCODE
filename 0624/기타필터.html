@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <fieldset>
+    <legend><a href="javascript:vsb()">visible</a> / <a href="javascript:hdn()">hidden</a></legend>
+    <p>보이는 문단</p>
+    <p style="visibility: hidden">숨겨진 문단</p>
+    <p style="display: none">자리를 차지하지 못한 문단</p>
+    <p style="opacity: .2">투명한 문단</p>
+  </fieldset>
+  
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  function vsb(){
+    $('p:visible').each(function(){
+      console.log( this.innerText ); //innerText 특징 - 랜더링 이후의 결과 반영
+      console.log( $(this).text() );
+    });
+  }
+
+  function hdn(){
+    $('p:hidden').each(function(){
+      console.log( this.innerText );
+      console.log( $(this).text() );
+    });
+  }
+</script>
+</body>
+</html>

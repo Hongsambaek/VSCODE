@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 100px;
+}
+
+p {
+  border-style: solid;
+}
+
+</style>
+</head>
+<body>
+  <h4>title 속성 정보를 이미지 생성 후 추가</h4>
+  <p title="팝콘각 모코코.gif">팝콘</p>
+  <p title="신나 모코코.gif">신나</p>
+  <p title="모코코 만큼 화난다.gif">샷건</p>
+  <p title="의문모코코.gif">갈고리수집가</p>
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+
+  $('p').on('click',function(){
+
+    let titleToSrc = $(this).attr('title');
+    console.log(titleToSrc);
+    
+    // jQuery - 동적이미지 생성 $("문자열로 모두 구성"), $("요소껍데기".{추가속성정의})
+    let v_img = $(`<img src="../images/${titleToSrc}" alt="모코코">`);   
+
+
+    // 자식.appendTo(부모) pretendTo(), insertBefore(), insertAfter()
+    // v_img.insertAfter(this);
+    
+
+    let v_img2 = $('<img>', {
+      src: '../images/' + titleToSrc,
+      'alt' : '대체텍스트',
+      "title" : 'jq방식 이미지요소2'
+    });
+
+
+    // 부모.append(자식) pretend(), before(), after()
+    // after : 요소 외부 앞으로 배치
+    // $(this).after(v_img2);
+
+
+
+    // JS 동적 이미지 생성1 - node로 생성하기 (메소드사용)
+    let v_img3 = document.createElement('img'); // <img>
+    v_img3.src = `../images/${titleToSrc}`
+    v_img3.alt = "alternate";
+    v_img3.title = "JS동적이미지1";
+    
+    // append(node와 DOMString), appendChild(node만)
+    // this.append(v_img3);
+    // this.appendChild(v_img3);
+    // this.insertBefore(v_img3,this); // null일때 append와 동일한 위치로 추가한다.
+
+    // this.insertBefore(v_img3, this.firstChild );
+
+    
+    let v_body = document.querySelector('body');
+    console.log(v_body.childNodes);
+    v_body.insertBefore(v_img3, v_body.childNodes[3]);
+
+
+    // JS 동적 이미지 생성2 - DOMString방식
+    // let v_img4 = "<img src='../images/신나 모코코.gif' alt='신나버린모코코' title='JS동적이미지2'>";
+    // this.innerHTML = v_img4;
+  });  
+  
+</script>
+</body>
+</html>

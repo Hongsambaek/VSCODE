@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+div {
+  height: 80vh;
+  background-color: turquoise;
+  color: brown;
+} 
+</style>
+</head>
+<body>
+  <div></div>
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+
+  // 이벤트핸들러/리스너는 매개변수를 통해 이벤트 객체(표준방식)를 전달받음
+  // evnet키워드를 통해 이벤트 정보를 자동으로 할당 받는 방식은 ms에 의해 구현됨
+  //            → 많이 사용되지만 브라우저 표준이 아니므로 표준방식인 이벤트객체 활용을 권장    
+
+  $('div').on('click', function(e){ // 표준
+    // let e = event; // 비표준
+    let result = "이벤트 명 : " + e.type + "<br>";
+    result += "이벤트의 타겟 : " + e.target.nodeName + "<br>"; 
+    result += "문서 대상 좌표 : " + e.pageX + " : " + e.pageY + "<br>";
+    result += "브라우저 대상 좌표 : " + e.screenX + " , " + e.screenY;
+    $(this).html(result);
+  });
+
+  // 하나의 요소에 여러 이벤트 적용하기
+  // $(선택자).on({이벤트:함수, 이벤트:함수, 이벤트:함수})
+  $('div').on({
+    mouseenter : function(){ // mouseover
+      $(this).css("background-color", "lime");
+    },
+    mouseleave : function(){ // mouseout
+      $(this).css("background-color", "teal");
+    },
+    dblclick : function(){
+      $(this).css("background-color", 'mediumblue');
+    }
+  })
+
+</script>
+</body>
+</html>

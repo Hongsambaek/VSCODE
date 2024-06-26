@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+button {
+  display: none;
+}
+</style>
+</head>
+<body>
+  <img src="../images/신나 모코코.gif" data-src="../images/의문모코코.gif">
+  <img src="../images/팝콘각 모코코.gif" data-src="../images/파이팅!모코코.gif">
+  <img src="../images/모코코위 모코코.gif" data-src="../images/안녕!모코코.gif">
+  <img src="../images/초롱초롱모코코.gif" data-src="../images/좌절모코코.gif">
+  <button>보이기</button>
+  
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  let v_src;
+  $('img').on ({
+    mouseover : function(){
+      // 다른 이미지 보여주기
+      
+      // 원본정보
+      v_src = $(this).attr('src');
+
+      // 사용저정의속성 - data(data-제외한 속성명) or attr(full 속성명)
+      let v_src2 = $(this).data('src');
+      console.log(v_src2);
+
+      // src2의 정보를 src속성에 대입하기 - attr(속성명, 속성값)
+      $(this).attr('src', v_src2);
+      
+    },
+    mouseout : function(){
+      // 원본 이미지 보여주기
+      $(this).attr('src', v_src);
+    },
+    dblclick : function(){
+      // 이미지 요소 숨기기 - hide()
+      $(this).hide('src');
+      // 모든 이미지요소 숨겨졌을때 버튼 보이기 - show() 
+      console.log( $('img:visible').length );
+      // 모든 요소 숨겨짐 상태 조건 : visible 필터 및 length속성 사용
+      if($('img:visible').length == 1) {
+        $('button').show();
+      }
+    }
+  });
+  // 버튼 클릭시 이벤트 >> 모든 이미지 요소 보이기 및 버튼 숨기기 처리
+  $('button').on('click',function(){
+    $('img').show();
+    $(this).hide(1000);
+  });
+
+</script>
+</body>
+</html>
