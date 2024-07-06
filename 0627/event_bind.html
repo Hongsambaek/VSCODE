@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="wrapper">
+    <input type="button" class="btn" value="정적버튼">
+    <input type="button" id="clear" value="해제">
+  </div>
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('.btn').on('click',function(){
+    // 동적 버튼 생성
+    // $(선택자).bind(event, fn)
+    // $(선택자).on(event, fn)
+    
+    // id=wrapper 영역 내부의 뒷쪽으로 요소 추가( 부모.append(자식) / 자식.appendTo(부모) )
+    $("<input type='button' class=\"btn\" value='동적버튼'>").appendTo('#wrapper')
+  });
+
+  $('#clear').on('click',function(){
+    $('.btn').off('click');
+  });
+  
+  // id=clear 버튼 클릭시 이벤트 해제
+
+
+  
+</script>
+</body>
+</html>

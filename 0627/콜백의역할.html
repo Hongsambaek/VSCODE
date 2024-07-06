@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+img {
+  width: 200px;
+}
+</style>
+</head>
+<body>
+  <div>
+    <img src="../images/신나 모코코.gif" alt="신나!">
+  </div>
+  <button>버튼</button>
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+/*   $('button').on('click', function(){
+    $('img').hide('slow');
+      alert("숨겼음.. 찾아");
+  }); */
+
+  $('button').on('click', function(){
+    console.time('ET');
+    // 'fast - 200ms' , speed 기본값 400ms , 'slow - 600ms'
+    $('img').hide('normal', function(){
+      console.timeEnd('ET');
+      alert("모코코 사라짐");
+    });
+  });
+
+</script>
+</body>
+</html>

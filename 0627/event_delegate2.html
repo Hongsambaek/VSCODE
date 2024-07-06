@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type="file">
+    <button id="add">파일선택 영역 추가</button>
+    <!-- 동적요소 여기로 추가1 -->
+    <!-- 동적요소 여기로 추가2 -->
+    <!-- 동적요소 여기로 추가3 -->
+  </div>
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('#add').on('click',function(){
+
+    // 동적 파일선택요소 추가하기
+    let result = '<p><input type="file">';
+    result += '<button>삭제</button></p>';
+    
+    $('div').append(result);
+  });
+
+  // 동적요소인 삭제버튼에 이벤트 주기
+  $(document).on('click', '.btn', function(){
+    // 동적요소 제거
+    $(this).parent().remove(); // p요소와 그 내부 자식 요소를 모두 지움
+  });
+  
+  
+</script>
+</body>
+</html>

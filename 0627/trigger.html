@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <select id="sido">
+    <option value="">선택</option>
+    <option value="1">대전광역시</option>
+    <option value="2">서울특별시</option>
+    <option value="3">세종특별자치시</option>
+    <option value="4">제주특별자치도</option>
+  </select>
+  <select id="gugun"></select>
+
+  <p>Click!!!</p>
+  
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  $('#sido').on('change',function(e,index){
+
+    let $sidoVal = $(this).val();
+  
+    // gugun 영역의 option 요소를 생성
+    let result;
+    if(index == 1 || $sidoVal == 1){
+      result = "<option>동구</option>";
+      result += "<option>중구</option>";
+      result += "<option>서구</option>";
+      result += "<option>대덕구</option>";
+      result += "<option>유성구</option>";
+    }
+
+    if(index == 2 || $sidoVal == 2){
+      result = "<option>중구</option>";
+      result += "<option>마포구</option>";
+      result += "<option>용산구</option>";
+      result += "<option>강남구</option>";
+      result += "<option>동작구</option>";
+    }
+
+    if(index == 3 || $sidoVal == 3){
+    result = "<option>조치원</option>";
+    result += "<option>세종</option>";
+    }
+    
+
+    if(index == 4 || $sidoVal == 4){
+    result = "<option>제주시</option>";
+    result += "<option>서귀포시</option>";
+    }
+    $('#gugun').text(""); // 영역 초기화
+    $('#gugun').append(result);
+
+    // $('#gugun').html(result);
+  });
+
+  // trigger - 대상요소에 적용되어있는 이벤트를 강제적으로 실행하는 기능
+  $('#sido').trigger('change');
+  $('#sido option').eq(1).prop('selected',true);
+
+
+  // 사용자 정의 이벤트를 통한 trigger의 매개변수 확인
+  $('p').on('customEvent', function(e,a,b,c){
+    alert(a.today + b.lunch + c.what); // 인자 하나만 표현, 배열로 받으면 각 정보가 각각 매개변수로 전달
+                      // 배열로 받으면 각 정보가 각 매개변수로 전달
+                      // 객체로 받으면 전체 정보가 한 매개변수로 전달되며 내부적인 key로 접근해야 value를 표현 가능하다
+  });
+
+  // $('p').trigger('customEvent', ['오','점','뭐?']); // 인자 하나만 전달(여러개 보낼 때 객체 활용)
+  $('p').trigger('customEvent', {today:'오', lunch:'점', what:'뭐?'}); // 인자 하나만 전달(여러개 보낼 때 객체 활용)
+  
+
+</script>
+</body>
+</html>

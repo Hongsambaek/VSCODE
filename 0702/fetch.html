@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 응답 객체 제공 메소드
+  // text() - 응답을 읽고 텍스트 반환
+  // json() - 응답을 JSON형태로 해석
+  // blob() - 응답을 blob형태로 반환
+  // ... 외 메소드 존재
+  
+  
+  // ES6에서 추가된 신규 비동기처리 함수 - fetch()
+  // promise기반으로 되어 있다( then(), catch(), finally() 사용으로 비동기 결과를 간결하게 표현가능)
+  // fetch("요청서버페이지")
+  fetch("../0628/test.txt")
+    .then((res) => res.text())
+    .then((data)=> console.log(data))
+    .catch((err) => console.log(err))
+    .finally(alert("성공/실패에 관계없이 항상 실행됨"));
+
+  fetch("../0628/sample/test.json")
+    .then( (response) => response.json() )
+    .then( (jsonData) => console.log(jsonData));
+  
+  
+  // 프로미스 기반으로 하는 외부 라이브러리 axios도 공부하면 좋음
+      
+    
+    
+    
+  
+  
+</script>
+</body>
+</html>

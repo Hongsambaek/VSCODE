@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>AJAX호출</button>
+  <button>CSV데이터 가져오기</button>
+  <button>JSON데이터 가져오기</button>
+  <button>XML데이터 가져오기</button>
+  <div></div>
+
+<script>
+  let result;
+  // 버튼에 이벤트를 주고 
+  document.querySelector('button').addEventListener('click',function(){
+
+    // 그 함수에서 ajax구분 작성
+  
+      // 1. 객체 생성하기
+      let req = new XMLHttpRequest();
+  
+      // 2. 요청 설정 - url정보는 test.txt로 한다.
+      req.open('get', 'test.txt'); // true, false 여부에 따라 결과 달라짐
+      // 4. 응답 받기 - 화면으로 출력한다
+      req.onreadystatechange = function(){
+        if(req.readyState == 4 && req.status == 200) {
+          result = req.responseText;
+          document.querySelector('div').innerText = req.responseText
+            = req.responseText;
+        }
+      }
+      // 3. 요청 전달
+      req.send();
+      alert(">> " + result); // 동기 비동기 흐름에 따라 따라 결과 달라짐
+  });
+
+
+  let v_btn = document.querySelectorAll('button');
+  v_btn[1].addEventListener('click',function(){
+
+    // csv가져오는 AJAX 작성
+    
+    // 1. 객체생성
+    let csv = new XMLHttpRequest();
+    // 2. 요청 설정 - URL >> csv파일 경로
+    csv.open('get','sample/test.csv',false);
+
+      // 버튼 누르면 응답 받음 >> 이미 요청에 의한 완료가 진행되었으므로 결과 표현 가능
+
+      // ★ 이미 완료된 시점이므로 직전 코드(2-요청 전달, 3-요청 처리중)의 상태 확인은 불가
+      // >> 완료 직전 코드가 필요한 상황에서는 반드시 onreadystatechange의 도움을 받아야 가능
+     
+    // 4. 응답 받기 - csv 파일 정보 콘솔로 확인
+    csv.onreadystatechange = function(){
+
+      // console.log(csv.status);
+      // console.log(csv.readyState)
+
+      if(csv.readyState == 4 && csv.status == 200) {
+        console.log(csv.responseText);
+        f_csv(csv.responseText);
+        // document.querySelector('div').innerText = csv.responseText
+        // = csv.responseText;
+      }
+    }
+    // 3. 요청 전달
+    csv.send();
+    // alert("test.csv \n" + csv.responseText);
+  });
+  
+
+  let v_div = document.querySelector('div')
+  function f_csv(p_csv) {
+    console.log(p_csv);
+
+    // 행(row) 정보로 나누기
+    let v_lines = p_csv.split("\r\n");
+    console.log(v_lines);
+
+    // 문자열로 테이블 요소 생성하기
+    let v_tbl = "<table border=1>";
+    
+
+    for(let i = 0; i<v_lines.length; i++) {
+      v_tbl += "<tr>";
+      
+      // 각 행정보에서 각 셀정보로 정리  
+      let v_cell = v_lines[i].split(",");
+      // console.log(v_cell);
+
+      for(let j = 0; j<v_cell.length; j++){
+        // v_tbl += `<td>${v_cell[j]}</td>`;
+        v_tbl += "<td>" + v_cell[j] + "</td>";
+      }
+      v_tbl += "</tr>";
+
+    }  
+    
+    v_tbl += "</table>"
+
+    v_div.innerHTML = v_tbl;
+  }
+
+  // JSON 가져오는 AJAX작성
+  v_btn[2].addEventListener('click',function(){
+
+    // 1. 객체생성 - XMLHttpRequest
+    let json = new XMLHttpRequest;
+
+    // 2. 요청설정 - open(method, url, async)
+    json.open('get', 'sample/test.json', true);
+    
+    // 4. 응답받기 - onreadystatechange, readyState, status
+    json.onreadystatechange = function(){
+      
+      if(json.readyState == 4 && json.status == 200) {
+        // console.log(json.responseText); // 문자열 -> 객체로 변환 처리
+        let jsonOBJ = JSON.parse(json.responseText);
+        f_json(jsonOBJ);
+      }
+    }
+
+    // 3. 요청전달 - send()
+    json.send();
+  });
+
+function f_json(p_obj){
+  // console.log("함수로 잘 넘어온 객체 >>", p_obj);
+
+  // Object 내장객체의 keys(), values(), entries()로 각 항목을 배열로 받기
+  // console.log( Object.keys(p_obj) );
+  let objVal = Object.values(p_obj)[0];
+  let objKey = Object.keys(objVal);
+  console.log(objKey);
+
+  // table형태로 정보 출력
+  let v_tbl = "<table border=1>";
+  v_tbl += `<tr><td>${objKey[0]}</td><td>${objKey[1]}</td><td>${objKey[2]}</td><tr>`
+  
+  for(let i = 0; i<p_obj.length; i++){
+  console.log(p_obj[i].name);
+  v_tbl += `<tr><td>${p_obj[i].name}</td>`;
+  v_tbl += `<td>${p_obj[i].type}</td>`;
+  v_tbl += `<td>${p_obj[i].alias}</td><tr>`;
+  
+  
+}
+  v_tbl += "</table>";
+
+  v_div.insertAdjacentHTML('beforeend',v_tbl);
+}
+
+// XML을 가져오기
+v_btn[3].addEventListener('click',function(){
+  let xml = new XMLHttpRequest;
+
+  xml.open('get','sample/test.xml',true);
+
+  xml.onreadystatechange = function() {
+  if(xml.readyState == 4 && xml.status == 200) {
+    // console.log(xml.responseXML);
+    f_xml(xml.responseXML);
+    }
+  }
+  xml.send();
+});
+
+function f_xml(p_xml) {
+  // console.log(p_xml.children[0].children);
+  let v_friend = p_xml.querySelectorAll('friend');
+
+  let v_tbl = "<table border=1>";
+
+  for(let i = 0; i<v_friend.length; i++) {
+    v_tbl += "<tr>";
+
+  let child = v_friend[i].children;
+  for(let i = 0; i<child.length; i++) {
+      v_tbl += "<td>" + child[i].firstChild.data + "</td>"; // nodeValue or data
+    }
+
+    v_tbl += "</tr>"
+  }
+
+v_tbl += "</table>"
+
+v_div.insertAdjacentHTML('beforeend',v_tbl);
+
+}
+  
+</script>
+</body>
+</html>

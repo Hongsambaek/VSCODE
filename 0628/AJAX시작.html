@@ -1,0 +1,25 @@
+<script>
+
+  // 비동기 통신을 위한 객체 생성
+  let req = new XMLHttpRequest();
+
+  // 요청 설정
+  // req.open(method, url, async는 생략가능 - default = true, 비동기 )
+  req.open('get', 'test.txt',true);
+
+  // 요청 전달
+  req.send();
+
+  // 응답 확인하기
+  req.onreadystatechange = function(){
+    console.log(req.readyState); // 응답 상태 확인
+    // 서버에서 처리 및 응답 준비 완료 이면서 상태코드 '성공/success'
+    if(req.readyState == 4 && req.status == 200){
+      // 응답 결과 받음
+      console.log(req.responseText);
+      document.querySelector('body').innerText = req.responseText;
+    }
+  };
+
+  
+</script>

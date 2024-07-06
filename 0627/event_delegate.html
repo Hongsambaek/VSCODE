@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="wrapper">
+    <input type="button" class="btn" value="정적버튼">
+    <input type="button" id="clear" value="해제">
+  </div>
+
+<script src="../jsFolder/jquery-3.7.1.min.js"></script>
+<script>
+  // 동적 이벤트 부여 방식 - delegate
+  // $(선택자).delegate(selector, event, fn)
+  // $(선택자).on(event, selector, fn)
+  $('#wrapper').on('click','.btn', function(){
+    // 동적 요소 생성
+    let $newBtn = $("<input>", {
+      'type' : 'button',
+      class : 'btn',
+      "value" : '동적버튼'
+    })
+
+    $('#wrapper').append($newBtn); 
+  });
+  
+  $('#clear').on('click',function(){
+    $('#wrapper').off('click');
+  });
+  
+  
+  
+  
+  
+  
+  $('.btn').on('click',function(){
+    $("<input type='button' class=\"btn\" value='동적버튼'>").appendTo('#wrapper')
+  });
+
+ 
+
+
+
+  
+</script>
+</body>
+</html>

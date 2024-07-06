@@ -15,34 +15,77 @@
 }
 .fontGold {
   color: gold;
-} 
+}
+.fontTurq {
+  color: turquoise;
+  font-style: italic;
+  font-size: larger;
+}
 </style>
 </head>
 <body>
   <!-- data {key:value}형태로 작성후 event객체의 data속성으로 key에 접근하여 값을 얻음(ex. e.data.key) -->
   <p>on(event[,selector][,data],fn) / one(event[,data],fn) / off(event[,selector][,fn])</p>
+  <div></div>
   
-  <button>제거</button>
-  <!-- <button></button> -->
-  <!-- <button></button> -->
+  <button>정적요소 이벤트 제거</button>
+  <button>동적요소 이벤트 제거</button>
+  <button>선택자만 제거</button>
+  <button>일부기능의 함수만 제거</button>
 
 <script src="../jsFolder/jquery-3.7.1.min.js"></script>
 <script>
   // 정적 대상 이벤트 부여하기
   // on(event[,Childselector][,data],fn)
-  $('p').on('mouseover',{'static': '정적대상'},function(e){
-    $(this).addClass('sttBg');
+  $('p').on('mouseover',{'static': '정적대상bind방식'},function(e){
+    $(this).toggleClass('sttBg');
     $(this).text(e.data.static);
   });
 
+  let rmvFn;
+  $('p').on('mouseover', rmvFn = function(){
+    $(this).toggleClass('fontTurq');
+  });
+
+  // one(event[,data],fn)
+  $('p').one('click',{once : '한번만'}, function(event){
+    alert(evnet.data.once + " 실행 ");
+  });
+  
+
   // 동적 대상 화면에 추가하기
-  $("<p>동적인 p요소</p>").appendTo($('body'));
-  
-  
-  
+  $("<p>동적인 p요소</p>").appendTo($('div'));
+  $("<p id='p2'>동적인 p요소2</p>").appendTo($('div'));
   
   // 동적 대상 이벤트 부여하기
+  // 정적부모.on(이벤트, 위임받을 자식대상, 콜백함수)
+  $('div').on('mouseover','p', {'dynamic' : '동적대상delegate방식'}, function(ev){
+    $(this).toggleClass('dynmBg').text(ev.data.dynamic);
+  });
+
+  $('div').on('mouseover','#p2',function(){
+    $(this).toggleClass('fontGold');
+  });
   
+  let $btns = $('button');
+
+  // off(event[,selector][,fn])
+  // off()의 selector는 on()에 정의된 selector만 지정할 수 있다.
+  $btns.eq(0).on('click',function(){
+    $('p').off('mouseover');
+  });
+
+  $btns.eq(1).on('click',function(){
+    $('div').off('mouseover'); // 동적 요소의 이벤트 중지는 이벤트 대상을 제거해야 함
+  });
+
+  $btns.eq(2).on('click',function(){
+    $('div').off('mouseover','#p2'); // 일부 선택자만 제거함
+  });
+
+  $btns.eq(3).on('click',function(){
+    $('p').off('mouseover', rmvFn); // 일부 기능을 담은 함수만 제거
+  });
 
 </script>
 </body>
